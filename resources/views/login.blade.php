@@ -1,7 +1,8 @@
 <x-main-layout titulo="Login" color="fundo-login">
-    <div class="container p-6 bg-white mt-50 rounded-md">
-    <h1 class="escrito-entrar text-black text-center mt-50">Entrar</h1>
-    <form>
+    <div class="container p-6 bg-white mt-35 rounded-md">
+    <h1 class="escrito-entrar text-black text-center mt-50">Entrar:</h1>
+    <form action="{{route('login_submit')}}" method="POST">
+      @csrf
     <div class="mb-3">
   <div class="form-group">
     <label for="usuario" >Usuário</label>
