@@ -9,6 +9,7 @@ class MainController extends Controller
 {
     public function index(): View
     {
-        return view('components.main-layout');
+        return view('produtos');
     }
+
 }

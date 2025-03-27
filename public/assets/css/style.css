@@ -2,8 +2,16 @@
 {
     background: linear-gradient(to right, #011C40, #032859, #000000);
 }
+.container-completo{
+    width:80%;
+    height:auto;
+    margin:auto;
+    margin-top:7em;
+
+}
+
 .container{
-    width:40%;
+    width:45%;
 }
 .mb-3{
     width:80%;
