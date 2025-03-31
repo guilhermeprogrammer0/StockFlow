@@ -49,11 +49,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function(){
             return view('auth.cadastro');
         });
-        /*Fortify::requestPasswordResetLinkView(function(){
-            return view('auth.forgot-password');
+        Fortify::requestPasswordResetLinkView(function(){
+            return view('auth.esqueci-senha');
         });
         Fortify::resetPasswordView(function($request){
-            return view('auth.reset-password',['request'=>$request]);
-        });*/
+            return view('auth.resetar-senha',['request'=>$request]);
+        });
     }
 }

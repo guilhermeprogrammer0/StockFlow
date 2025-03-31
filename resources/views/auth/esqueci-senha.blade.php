@@ -1,27 +1,21 @@
-<x-main-layout titulo="Login" color="fundo-login">
+<x-main-layout titulo="Esqueci minha senha" color="fundo-login">
     <main class="container-completo m-8 d-flex justify-content-center align-items-center">
       <div class="w-7xs imagem">
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>
       <div class="container bg-white rounded-md">
-      <h1 class="escrito-entrar text-black text-center mt-50">Entrar</h1>
-      <form action="{{route('login')}}" method="POST" novalidate>
+      <h4 class="escrito-entrar text-black text-center mt-50">Enviar e-mail</h4>
+      <form action="{{route('password.email')}}" method="POST" novalidate>
         @csrf
       <div class="mb-3">
     <div class="form-group">
-      <label for="usuario" >Usuário</label>
+      <label for="usuario" >E-mail</label>
       <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
   </div>
     </div>
-    <div class="mb-3 ">
-    <div class="form-group">
-      <label for="senha">Senha</label>
-      <input type="password" class="form-control" id="password" placeholder="********" name="password">
-    </div>
-    <p><a href="{{route('register')}}" class="link-underline-dark">Não tem conta?</a></p>
-    <p><a href="{{route('password.request')}}" class="link-underline-dark">Esqueci minha senha</a></p>
+    <p class="text-center"><a href="{{route('login')}}" class="link-underline-dark">Lembrei minha senha</a></p>
     <div class="mb-3">
-    <button type="submit" class="btn btn-primary">Entrar</button>
+    <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
     @if($errors->any())
     <div class="text-danger">
@@ -32,6 +26,11 @@
      </div> 
      @endif
   </form>
+  @if(session('status'))
+  <div class="container alert alert-primary w-100 text-center">
+    <p>E-mail enviado com sucesso, siga as intruções para recuperar a sua senha.</p>
+  </div>
+  @endif
  
       </div>
   </main>

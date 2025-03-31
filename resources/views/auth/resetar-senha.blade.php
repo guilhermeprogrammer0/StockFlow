@@ -1,27 +1,32 @@
-<x-main-layout titulo="Login" color="fundo-login">
+<x-main-layout titulo="Resetar senha" color="fundo-login">
     <main class="container-completo m-8 d-flex justify-content-center align-items-center">
       <div class="w-7xs imagem">
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>
       <div class="container bg-white rounded-md">
-      <h1 class="escrito-entrar text-black text-center mt-50">Entrar</h1>
-      <form action="{{route('login')}}" method="POST" novalidate>
+      <h1 class="escrito-entrar text-black text-center mt-50">Recuperar senha</h1>
+      <form action="{{route('password.update')}}" method="POST" novalidate>
         @csrf
-      <div class="mb-3">
+        <input type="hidden" name="token" value="{{$request->route('token')}}">
+        <div class="mb-3">
     <div class="form-group">
-      <label for="usuario" >Usuário</label>
+      <label for="usuario" >E-mail</label>
       <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
-  </div>
     </div>
-    <div class="mb-3 ">
+    </div>
+        <div class="mb-3 ">
     <div class="form-group">
       <label for="senha">Senha</label>
       <input type="password" class="form-control" id="password" placeholder="********" name="password">
     </div>
-    <p><a href="{{route('register')}}" class="link-underline-dark">Não tem conta?</a></p>
-    <p><a href="{{route('password.request')}}" class="link-underline-dark">Esqueci minha senha</a></p>
+    <div class="mb-3 ">
+        <div class="form-group">
+          <label for="senha">Confirmar senha</label>
+          <input type="password" class="form-control" id="password_confirmation" placeholder="********" name="password_confirmation"> 
+      </div>
+        </div>
     <div class="mb-3">
-    <button type="submit" class="btn btn-primary">Entrar</button>
+    <button type="submit" class="btn btn-primary">Recuperar</button>
     </div>
     @if($errors->any())
     <div class="text-danger">
