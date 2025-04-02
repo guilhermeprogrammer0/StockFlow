@@ -17,13 +17,14 @@
         <div class="mb-3 ">
     <div class="form-group">
       <label for="senha">Senha</label>
-      <input type="password" class="form-control" id="password" placeholder="********" name="password">
+      <input type="password" class="form-control senha" id="password" placeholder="********" name="password">
     </div>
     <div class="mb-3 ">
         <div class="form-group">
           <label for="senha">Confirmar senha</label>
-          <input type="password" class="form-control" id="password_confirmation" placeholder="********" name="password_confirmation"> 
+          <input type="password" class="form-control senha" id="password_confirmation" placeholder="********" name="password_confirmation"> 
       </div>
+      <i class="fa-solid fa-eye" id="btn_senha"></i>
         </div>
     <div class="mb-3">
     <button type="submit" class="btn btn-primary">Recuperar</button>

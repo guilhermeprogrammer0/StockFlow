@@ -7,7 +7,6 @@
     height:auto;
     margin:auto;
     margin-top:2em;
-
 }
 
 .container{
@@ -35,4 +34,16 @@
     font-size: 1.2em;
     border:none;
 
+}
+.campo-senha{
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width:768px){
+    .container-completo{
+        flex-direction: column;
+    }
+    .container{
+        width: 80%;
+    }
 }
