@@ -21,6 +21,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'role' => ['required'],
             'email' => [
                 'required',
                 'string',
@@ -36,6 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'name.required' => 'O nome é obrigatório',
             'name.string' => 'O campo nome tem que ser um texto',
             'name.max' => 'O campo nome não pode ter mais que :max caracteres',
+            'role.required' => 'Campo de perfil é obrigatório',
             'email.required' => 'O email é obrigatório',
             'email.email' => 'O email deve ser válido',
             'email.unique' => 'o email informado já está em uso',
@@ -49,6 +51,7 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
+            'role' => $input['role'],
             'password' => Hash::make($input['password']),
         ]);
     }

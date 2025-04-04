@@ -15,7 +15,17 @@
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
             </div>
-</div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group">
+              <select class="form-select" aria-label="Default select example" name="role">
+                <option value="administrador">Administrador</option>
+                <option value="comum">Comum</option>
+              </select>
+              @error('role')
+              <span class="text-danger mt-1">{{$message}}</span>
+              @enderror
+          </div>
       <div class="mb-3">
     <div class="form-group">
       <label for="usuario" >Usuário</label>
