@@ -29,6 +29,8 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => ['required','string','min:6','confirmed'],
+            'password_confirmation' => ['required','same:password'],
+
         ],
         [
             'name.required' => 'O nome é obrigatório',
@@ -39,7 +41,9 @@ class CreateNewUser implements CreatesNewUsers
             'email.unique' => 'o email informado já está em uso',
             'password.required' => 'A senha é obrigatória',
             'password.min' => 'A senha tem que ter no mínimo :min caracteres',
-            'password.confirmed' => 'O campo senha não confere com a confirmação de senha'
+            'password.confirmed' => 'O campo senha não confere com a confirmação de senha',
+            'password_confirmation.required' => 'A confirmação de senha é obrigatória',
+            'password_confirmation.same' => 'A confirmação de senha deve ser igual a senha'
         ])->validate();
 
         return User::create([

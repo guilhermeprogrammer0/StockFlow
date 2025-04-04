@@ -11,20 +11,16 @@
     <div class="form-group">
       <label for="usuario" >E-mail</label>
       <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
+      @error('email')
+              <span class="text-danger mt-1">{{$message}}</span>
+      @enderror
   </div>
     </div>
     <p class="text-center"><a href="{{route('login')}}" class="link-underline-dark">Lembrei minha senha</a></p>
     <div class="mb-3">
     <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
-    @if($errors->any())
-    <div class="text-danger">
-      <ul> @foreach($errors->all() as $error)
-          <li>{{$error}}</li> 
-          @endforeach 
-         </ul> 
-     </div> 
-     @endif
+
   </form>
   @if(session('status'))
   <div class="container alert alert-primary w-100 text-center">
