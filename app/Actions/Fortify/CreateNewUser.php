@@ -21,7 +21,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'role' => ['required'],
+            'role' => ['required','in:Administrador,Comum'],
             'email' => [
                 'required',
                 'string',
@@ -38,12 +38,13 @@ class CreateNewUser implements CreatesNewUsers
             'name.string' => 'O campo nome tem que ser um texto',
             'name.max' => 'O campo nome não pode ter mais que :max caracteres',
             'role.required' => 'Campo de perfil é obrigatório',
+            'role.in' => 'Somente valores válidos',
             'email.required' => 'O email é obrigatório',
             'email.email' => 'O email deve ser válido',
             'email.unique' => 'o email informado já está em uso',
             'password.required' => 'A senha é obrigatória',
             'password.min' => 'A senha tem que ter no mínimo :min caracteres',
-            'password.confirmed' => 'O campo senha não confere com a confirmação de senha',
+            'password.confirmed' => 'A senha e confirmação de senha devem ser iguais',
             'password_confirmation.required' => 'A confirmação de senha é obrigatória',
             'password_confirmation.same' => 'A confirmação de senha deve ser igual a senha'
         ])->validate();

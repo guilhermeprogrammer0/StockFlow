@@ -3,6 +3,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('produtos');
-})->middleware(['auth']);
+Route::middleware(['auth'])->group(function(){
+    Route::view('/home','home');
+    Route::get('/', function () {
+        return view('produtos');
+    });
+});
+

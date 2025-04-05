@@ -4,7 +4,8 @@
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>
       <div class="container bg-white rounded-md">
-      <h1 class="escrito-entrar text-black text-center mt-50">Entrar</h1>
+        
+      <h1 class="escrito-entrar text-black text-center mt-50">Cadastrar</h1>
       <form action="{{route('register')}}" method="POST" novalidate>
         @csrf
         <div class="mb-3">
@@ -16,16 +17,19 @@
               @enderror
             </div>
           </div>
-          <div class="mb-3">
-            <div class="form-group">
-              <select class="form-select" aria-label="Default select example" name="role">
-                <option value="administrador">Administrador</option>
-                <option value="comum">Comum</option>
+          <div class="mb-3 teste">
+            <div class="d-flex flex-column">
+            <label for="role" >Tipo de perfil</label>
+              <select class="form-select w-sm p-3 border" name="role">
+              <option value="0" selected>Selecione</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Comum">Comum</option>
               </select>
               @error('role')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
           </div>
+</div>
       <div class="mb-3">
     <div class="form-group">
       <label for="usuario" >Usuário</label>
@@ -56,10 +60,9 @@
         </div>
     <div class="mb-3">
     <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <p><a href="{{route('login')}}" class="link-underline-dark">Voltar para o login</a></p>
     </div>
-    <div class="mb-3">
-    <p><a href="{{route('login')}}" class="link-underline-dark">Entrar</a></p>
-    </div>
+
   </form>
       </div>
   </main>
