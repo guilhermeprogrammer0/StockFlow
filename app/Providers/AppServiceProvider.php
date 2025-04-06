@@ -13,9 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
-
     /**
      * Bootstrap any application services.
      */
@@ -24,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin',function(User $user){
             return $user->role == 'administrador';
         });
+        $this->register();
+        // Gate::define('ver_teste', [PolicyPagina::class, 'ver_teste']);
     }
 }

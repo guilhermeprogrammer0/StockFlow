@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class MainController extends Controller
@@ -31,7 +32,7 @@ class MainController extends Controller
             'role.in' => 'Somente valores válidos',
             'email.required' => 'O email é obrigatório',
             'email.email' => 'O email deve ser válido',
-            'email.unique' => 'o email informado já está em uso',
+            'email.unique' => 'o email informado está indisponível',
             'password.required' => 'A senha é obrigatória',
             'password.min' => 'A senha tem que ter no mínimo :min caracteres',
             'password.confirmed' => 'A senha e confirmação de senha devem ser iguais',

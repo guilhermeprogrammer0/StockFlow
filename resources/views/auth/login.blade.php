@@ -1,5 +1,5 @@
 <x-main-layout titulo="Login" color="fundo-login">
-    <main class="container-completo m-8 d-flex justify-content-center">
+    <main class="container-completo d-flex justify-content-center">
       <div class="w-7xs imagem">
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>

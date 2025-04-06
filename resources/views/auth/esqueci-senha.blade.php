@@ -1,5 +1,5 @@
 <x-main-layout titulo="Esqueci minha senha" color="fundo-login">
-    <main class="container-completo m-8 d-flex justify-content-center align-items-center">
+    <main class="container-completo d-flex justify-content-center align-items-center">
       <div class="w-7xs imagem">
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>
@@ -24,6 +24,7 @@
     <p>E-mail enviado com sucesso, siga as intruções para recuperar a sua senha.</p>
   </div>
   @endif
+
  
       </div>
   </main>
