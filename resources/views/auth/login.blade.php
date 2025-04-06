@@ -23,14 +23,13 @@
       @error('password')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
+              <i class="fa-solid fa-eye text-center mt-2" id="btn_senha"></i>
     </div>
-    <i class="fa-solid fa-eye" id="btn_senha"></i>
   </div>
-    <div class="mb-3">
-    <p><a href="{{route('register')}}" class="link-underline-dark">Não tem conta?</a></p>
+    <div class="mb-3 text-center">
     <p><a href="{{route('password.request')}}" class="link-underline-dark">Esqueci minha senha</a></p>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Entrar</button>
     </div>
   </form>

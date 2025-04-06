@@ -32,10 +32,11 @@
           @error('password_confirmation')
               <span class="text-danger mt-1">{{$message}}</span>
       @enderror
-      </div>
       <i class="fa-solid fa-eye" id="btn_senha"></i>
+      </div>
+  
         </div>
-    <div class="mb-3">
+    <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Recuperar</button>
     </div>
   </form>

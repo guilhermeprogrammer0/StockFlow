@@ -4,9 +4,8 @@
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>
       <div class="container bg-white rounded-md">
-        
       <h1 class="escrito-entrar text-black text-center mt-50">Cadastrar</h1>
-      <form action="{{route('register')}}" method="POST" novalidate>
+      <form action="{{route('cadastro_usuario')}}" method="POST" novalidate>
         @csrf
         <div class="mb-3">
             <div class="form-group">
@@ -17,18 +16,18 @@
               @enderror
             </div>
           </div>
-          <div class="mb-3 teste">
-            <div class="d-flex flex-column">
-            <label for="role" >Tipo de perfil</label>
-              <select class="form-select w-sm p-3 border" name="role">
+          <div class="mb-3">
+            <div class="form-group">
+            <label for="role">Tipo de perfil</label>
+              <select class="form-select p-3 border" name="role">
               <option value="0" selected>Selecione</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Comum">Comum</option>
+                <option value="administrador">Administrador</option>
+                <option value="comum">Comum</option>
               </select>
               @error('role')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
-          </div>
+        </div>
 </div>
       <div class="mb-3">
     <div class="form-group">
@@ -36,7 +35,7 @@
       <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
       @error('email')
               <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
+      @enderror
     </div>
     </div>
     <div class="mb-3">
@@ -45,7 +44,7 @@
       <input type="password" class="form-control senha" id="password" placeholder="********" name="password">
       @error('password')
               <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
+      @enderror
     </div>
 </div>
     <div class="mb-3 ">
@@ -55,15 +54,16 @@
           @error('password_confirmation')
               <span class="text-danger mt-1">{{$message}}</span>
           @enderror
+          <i class="fa-solid fa-eye mt-2" id="btn_senha"></i>
       </div>
-      <i class="fa-solid fa-eye" id="btn_senha"></i>
         </div>
-    <div class="mb-3">
+    <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Cadastrar</button>
     <p><a href="{{route('login')}}" class="link-underline-dark">Voltar para o login</a></p>
     </div>
 
   </form>
+
       </div>
   </main>
   </x-main-layout>

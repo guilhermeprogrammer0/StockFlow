@@ -3,25 +3,23 @@
     background: linear-gradient(to right, #011C40, #032859, #000000);
 }
 .container-completo{
-    width:80%;
+    width:90%;
     height:auto;
     margin:auto;
     margin-top:4em;
     padding:2em;
 }
-
 .container{
     width:45%;
     height:auto;
 
 }
 
-.mb-3{
-    margin:auto;
+.form-group{
+    max-width:100%;
     display:flex;
     flex-direction: column;
     align-items: center;
-    max-width:100%;
 }
 .escrito-entrar{
     color:#032859;
@@ -29,7 +27,11 @@
 }
 .form-control{
     padding:1.6em;
-    width:380px;
+    width:70%;
+}
+.form-select{
+    width:70%;
+    border:solid 2px red;
 }
 .btn-primary{
     background-color: #032859;
@@ -48,6 +50,6 @@
         flex-direction: column;
     }
     .container{
-        width: 80%;
+        width: 100%;
     }
 }

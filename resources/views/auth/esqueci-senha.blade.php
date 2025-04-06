@@ -14,7 +14,7 @@
   </div>
     </div>
     <p class="text-center"><a href="{{route('login')}}" class="link-underline-dark">Lembrei minha senha</a></p>
-    <div class="mb-3">
+    <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 
