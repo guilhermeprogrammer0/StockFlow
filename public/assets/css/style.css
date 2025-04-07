@@ -13,6 +13,7 @@
 }
 .logo{
     position: relative;
+    border-bottom:solid 3px #032859;
 }
 .menu-container{
     width:15%;
@@ -35,7 +36,7 @@
     background-color:#04326e;
 }
 .menu li a{
-    font-size: 1em;
+    font-size: 1.1em;
     text-decoration: none;
     color:white;
 }
@@ -81,6 +82,14 @@
 .campo-senha{
     display: flex;
     align-items: center;
+}
+.formulario{
+    width:50%;
+}
+.lista-categorias{
+    height: 200px;
+    overflow-y: scroll;
+    border-top:solid 2px  #032859;
 }
 @media screen and (max-width:768px){
     .container-completo{

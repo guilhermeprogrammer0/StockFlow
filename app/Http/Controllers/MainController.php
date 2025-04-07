@@ -16,6 +16,9 @@ class MainController extends Controller
         return view('auth.cadastro');
     }
     public function cadastro_usuario(Request $request){
+        if(Gate::denies('admin')){
+            abort(403,'Você não tem permissão para acessar esse recurso');
+        }
        $request->validate(
             [
                 'name' => ['required', 'string', 'max:255'],
@@ -45,6 +48,7 @@ class MainController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
+        return redirect->route('escolha_categoria');
     }
     
 }

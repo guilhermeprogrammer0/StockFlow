@@ -1,6 +1,6 @@
 <x-main-layout titulo="Escolha categoria" color="fundo-padrao">
         <x-logo-component />
-    <main class="w-full d-flex justify-between border-solid border-2 h-130">
+    <main class="w-full d-flex justify-between h-130 ">
         <x-menu-component />
         <x-area-component tipoAlinhamento="flex-column">
             <div class="mb-3">

@@ -59,7 +59,6 @@
         </div>
     <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Cadastrar</button>
-    <p><a href="{{route('login')}}" class="link-underline-dark">Voltar para o login</a></p>
     </div>
 
   </form>

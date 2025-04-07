@@ -29,8 +29,10 @@ CREATE TABLE IF NOT EXISTS `cache` (
 
 -- Copiando dados para a tabela stockflow.cache: ~0 rows (aproximadamente)
 INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1744041180),
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1744041180;', 1744041180);
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1744050065),
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1744050065;', 1744050065),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d', 'i:1;', 1744049452),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d:timer', 'i:1744049452;', 1744049452);
 
 -- Copiando estrutura para tabela stockflow.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -49,13 +51,9 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.categorias: ~3 rows (aproximadamente)
-INSERT IGNORE INTO `categorias` (`id`, `nome`, `created_at`, `updated_at`) VALUES
-	(1, 'Notebooks', '2025-04-07 17:58:50', '2025-04-07 17:58:50'),
-	(2, 'Desktop', '2025-04-07 17:58:50', '2025-04-07 17:58:50'),
-	(3, 'Tablets', '2025-04-07 17:58:50', '2025-04-07 17:58:50');
+-- Copiando dados para a tabela stockflow.categorias: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
@@ -142,15 +140,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.products: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.products: ~2 rows (aproximadamente)
 INSERT IGNORE INTO `products` (`id`, `nome`, `descricao`, `preco`, `quantidade`, `categoria_id`, `created_at`, `updated_at`) VALUES
-	(1, 'Produto1', 'Decricao1', 25.00, 2, 1, '2025-04-07 17:08:26', '2025-04-07 17:08:26'),
-	(2, 'Produto2', 'Decricao2', 50.00, 4, 1, '2025-04-07 17:08:26', '2025-04-07 17:08:26'),
-	(3, 'Produto3', 'Decricao3', 75.00, 6, 2, '2025-04-07 17:08:26', '2025-04-07 17:08:26'),
-	(4, 'Produto4', 'Decricao4', 100.00, 8, 2, '2025-04-07 17:08:26', '2025-04-07 17:08:26'),
-	(5, 'Produto5', 'Decricao5', 125.00, 10, 3, '2025-04-07 17:08:26', '2025-04-07 17:08:26');
+	(1, 'Notebook', 'Teste', 456.00, 8, 1, '2025-04-07 20:19:30', '2025-04-07 20:19:30'),
+	(2, 'Desktop LG', 'Teste', 4500.00, 2, 2, '2025-04-07 20:41:25', '2025-04-07 20:41:25');
 
 -- Copiando estrutura para tabela stockflow.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (
@@ -183,11 +178,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.users: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.users: ~2 rows (aproximadamente)
 INSERT IGNORE INTO `users` (`id`, `name`, `role`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Guilherme', 'administrador', 'guilhermesouza120903@gmail.com', NULL, '$2y$12$CD5KpOZMj0U02W81RwGKJujy0oIesUEuEqWtI4lc7Bpf3lyYqvlPq', NULL, NULL, NULL, 'sZw49TDvWTEd4y0Ja5XAGJuahBlpv5T9YFrFuNhrg21sEQ2IODJMiylW5UFo', '2025-04-04 22:45:32', '2025-04-07 17:50:43');
+	(1, 'Guilherme', 'administrador', 'guilhermesouza120903@gmail.com', NULL, '$2y$12$CD5KpOZMj0U02W81RwGKJujy0oIesUEuEqWtI4lc7Bpf3lyYqvlPq', NULL, NULL, NULL, 'XKhVcgB4HPKPbbCMHAyN3wSUVXbTMSfwUK4MFnTr0pltPMPgdl9bq4mley38', '2025-04-04 22:45:32', '2025-04-07 17:50:43'),
+	(2, 'Teste', 'comum', 'teste@teste.com', NULL, '$2y$12$4BtyaSz2GwtET3fJ9DCw0u53rEEkz6YUrlOvfjHKm8gbfmmQNw53i', NULL, NULL, NULL, NULL, '2025-04-07 21:07:26', '2025-04-07 21:07:26');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
