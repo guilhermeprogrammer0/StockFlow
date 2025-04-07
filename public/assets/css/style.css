@@ -2,6 +2,44 @@
 {
     background: linear-gradient(to right, #011C40, #032859, #000000);
 }
+.fundo-padrao{
+    background-color: #F2F2F2;
+}
+.color{
+    background-color: #032859;
+}
+.color-text{
+    color:#032859;
+}
+.logo{
+    position: relative;
+}
+.menu-container{
+    width:15%;
+}
+.area{
+    width:85%;
+}
+.menu{
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    cursor:pointer;
+}
+.menu li{
+    padding:1em;
+    border-radius:0.2em;
+}
+.menu li:hover{
+    background-color:#04326e;
+}
+.menu li a{
+    font-size: 1em;
+    text-decoration: none;
+    color:white;
+}
+
 .container-completo{
     width:90%;
     height:auto;
@@ -12,7 +50,6 @@
 .container{
     width:45%;
     height:auto;
-
 }
 
 .form-group{
@@ -29,7 +66,7 @@
     padding:1.6em;
     width:70%;
 }
-.form-select{
+.form-select-cadastro{
     width:70%;
     border:solid 2px red;
 }

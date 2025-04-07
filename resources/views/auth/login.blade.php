@@ -13,7 +13,7 @@
       <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
       @error('email')
               <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
+      @enderror
   </div>
     </div>
     <div class="mb-3">
@@ -32,6 +32,7 @@
     <div class="mb-3 text-center">
     <button type="submit" class="btn btn-primary">Entrar</button>
     </div>
+
   </form>
 
       </div>

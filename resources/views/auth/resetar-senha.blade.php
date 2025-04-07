@@ -1,5 +1,5 @@
 <x-main-layout titulo="Resetar senha" color="fundo-login">
-    <main class="container-completod-flex justify-content-center align-items-center">
+    <main class="container-completo d-flex justify-content-center align-items-center">
       <div class="w-7xs imagem">
         <img src="{{asset('imagens/imagem-logo-2.png')}}">
       </div>

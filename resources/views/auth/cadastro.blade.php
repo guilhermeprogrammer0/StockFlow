@@ -19,7 +19,7 @@
           <div class="mb-3">
             <div class="form-group">
             <label for="role">Tipo de perfil</label>
-              <select class="form-select p-3 border" name="role">
+              <select class="form-select-cadastro p-3 border" name="role">
               <option value="0" selected>Selecione</option>
                 <option value="administrador">Administrador</option>
                 <option value="comum">Comum</option>
