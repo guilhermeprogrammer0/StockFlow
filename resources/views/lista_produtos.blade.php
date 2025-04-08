@@ -1,10 +1,10 @@
 <x-main-layout titulo="Página principal" color="fundo-padrao">
     <x-logo-component />
-    <main class="d-flex flex-col lg:flex-row sm:h-180 lg:h-130">
+    <main class="main-container">
         <x-menu-component />
         <x-area-component tipoAlinhamento=""> 
             @if(count($produtos) === 0)
-            <h1>Não foram encontrados produtos</h1>
+            <h2 class="text-white bg-red-900 rounded p-1">Não foram encontrados produtos</h2>
             @endif
         @foreach($produtos as $produto)
             <div class="card w-auto">

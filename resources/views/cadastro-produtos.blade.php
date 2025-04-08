@@ -1,10 +1,10 @@
-<x-main-layout titulo="Escolha categoria" color="fundo-padrao">
+<x-main-layout titulo="Cadastro produtos" color="fundo-padrao">
     <x-logo-component />
-    <main class="d-flex flex-col lg:flex-row lg:h-180">
+    <main class="main-container !h-190">
         <x-menu-component />
         <x-area-component tipoAlinhamento="flex-column">
-            <div class="formulario p-2 mt-3 bg-white rounded ">
-            <div><h1>Cadastrar</h1></div>
+            <div class="formulario p-2 mt-3 bg-white rounded">
+            <div><h2>Cadastrar</h2></div>
             <form action="{{route('cadastro_produtos_submit')}}" method="post" novalidate>
                 @csrf
                 <div class="mb-3">

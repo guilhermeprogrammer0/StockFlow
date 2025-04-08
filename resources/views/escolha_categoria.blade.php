@@ -1,6 +1,6 @@
 <x-main-layout titulo="Escolha categoria" color="fundo-padrao">
     <x-logo-component />
-    <main class="d-flex flex-col lg:flex-row sm:h-150 md:h-150 lg:h-130">
+    <main class="main-container">
         <x-menu-component />
         <x-area-component tipoAlinhamento="flex-column">
             <section class="escolha-categoria">

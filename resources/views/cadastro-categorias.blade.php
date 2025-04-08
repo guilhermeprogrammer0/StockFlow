@@ -1,11 +1,11 @@
-<x-main-layout titulo="Escolha categoria" color="fundo-padrao">
+<x-main-layout titulo="Cadastro categoria" color="fundo-padrao">
     <x-logo-component />
-    <main class="d-flex flex-col lg:flex-row h-160">
+    <main class="main-container">
         <x-menu-component />
         <x-area-component tipoAlinhamento="flex-column">
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div>
-                    <h1>Cadastrar</h1>
+                    <h2>Cadastrar</h2>
                 </div>
                 <form action="{{route('cadastro_categorias_submit')}}" method="POST" novalidate>
                     @csrf
@@ -26,7 +26,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
-                                    <th scope="col">Excluir</th>
+                                    <th scope="col">Ação</th>
 
                                 </tr>
                             </thead>
