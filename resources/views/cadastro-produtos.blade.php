@@ -1,9 +1,9 @@
 <x-main-layout titulo="Escolha categoria" color="fundo-padrao">
     <x-logo-component />
-    <main class="w-full d-flex justify-between h-160 ">
+    <main class="d-flex flex-col lg:flex-row lg:h-180">
         <x-menu-component />
         <x-area-component tipoAlinhamento="flex-column">
-            <div class="formulario p-2 mt-3 bg-white rounded">
+            <div class="formulario p-2 mt-3 bg-white rounded ">
             <div><h1>Cadastrar</h1></div>
             <form action="{{route('cadastro_produtos_submit')}}" method="post" novalidate>
                 @csrf

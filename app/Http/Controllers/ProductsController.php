@@ -23,9 +23,8 @@ class ProductsController extends Controller
                     'categoria.required' => 'O campo categoria é obrigatório',
                     'categoria.not_in' => 'Somente valores válidos'
                 ]);
-                $produtos = Product::where('categoria_id',$request->categoria)->get();
-                return view('lista_produtos',['produtos'=>$produtos]);
-
+                session(['categoria'=>$request->categoria]);
+                return redirect()->route('lista_produtos');
     }
     public function cadastro_produtos(){
         if(Gate::denies('admin')){
@@ -92,6 +91,14 @@ class ProductsController extends Controller
             $categoria->nome = $request->nome;
             $categoria->save();
             return redirect()->back();
+    }
+    public function lista_produtos(){
+        if(!session()->has('categoria')){
+            return redirect()->route('escolha_categoria');
+        }
+        $categoria = session('categoria');
+        $produtos = Product::where('categoria_id',$categoria)->get();
+        return view('lista_produtos',['produtos'=>$produtos]);
     }
 
 }
