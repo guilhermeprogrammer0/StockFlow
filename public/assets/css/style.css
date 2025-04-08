@@ -72,7 +72,6 @@
     width:200px;
     font-size: 1.2em;
     border:none;
-
 }
 .campo-senha{
     display: flex;
@@ -85,6 +84,9 @@
     height: 300px;
     overflow-y: scroll;
     border-top:solid 2px  #032859;
+}
+.lista_usuarios{
+    width:80%;
 }
 @media screen and (max-width:768px){
     .container-completo{
@@ -130,7 +132,9 @@
     }
     .area{
         width:100%;
-    
+    }
+    .lista_usuarios{
+        width:90%;
     }
     
 }

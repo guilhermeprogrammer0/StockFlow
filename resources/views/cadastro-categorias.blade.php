@@ -22,7 +22,7 @@
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
                     <div class="lista-categorias">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
