@@ -10,6 +10,9 @@
         <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="{{route('cadastro')}}">Cadastrar Usuários</a></li>
         <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="{{route('lista_usuarios')}}">Lista Usuários</a></li>
         @endcan
+        @can('comum')
+        <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="#">Editar/Excluir Usuário</a></li>
+        @endcan
     </ul>
   
 </section>

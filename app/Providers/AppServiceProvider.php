@@ -23,7 +23,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin',function(User $user){
             return $user->role == 'administrador';
         });
-        $this->register();
+        Gate::define('comum',function(User $user){
+            return $user->role == 'comum';
+        });
+        
         // Gate::define('ver_teste', [PolicyPagina::class, 'ver_teste']);
     }
 }

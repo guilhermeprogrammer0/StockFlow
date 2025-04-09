@@ -32,7 +32,7 @@
     align-items: flex-start;
     flex-direction: column;
     background-color: #011C40;
-    font-size:1.1em;
+    font-size:1.2em;
 }
 .menu a{
     text-decoration: none;
@@ -104,9 +104,7 @@
     }
     .menu{
         flex-direction: row;
-    }
-    .menu a{
-        font-size:0.8em;
+        font-size: 0.8em;
     }
     .escolha-categoria{
         width:80%;
