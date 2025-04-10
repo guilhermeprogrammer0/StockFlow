@@ -35,7 +35,7 @@
 
 .btnMenu {
     display: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .menu {
@@ -134,17 +134,18 @@
     .menu {
         display: none;
     }
+
     .ativo {
-        margin-bottom:100px;
-        transition: left 0.3s ease;
-    }
-    #menu-ativo.ativo .menu {
-        display: flex;
-        flex-direction: row;
-        height:auto;
-        font-size:1em;
+        margin-bottom: 100px;
     }
 
+    #menu-ativo.ativo .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 1.1em;
+    }
     .btnMenu {
         display: flex;
     }
@@ -187,12 +188,3 @@
 
 }
 
-@media screen and (max-width:600px) {
-    #menu-ativo.ativo .menu {
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        font-size: 1em;
-    }
-
-}
