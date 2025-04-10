@@ -1,138 +1,198 @@
-.fundo-login
-{
+.fundo-login {
     background: linear-gradient(to right, #011C40, #032859, #000000);
 }
-.fundo-padrao{
+
+.fundo-padrao {
     background-color: #F2F2F2;
 }
-.color{
+
+.color {
     background-color: #032859;
 }
-.color-text{
-    color:#032859;
+
+.color-text {
+    color: #032859;
 }
-.logo{
+
+.logo {
     position: relative;
-    border-bottom:solid 3px #032859;
+    border-bottom: solid 3px #032859;
 }
-.menu-container{
-    width:17%;
+
+.menu-container {
+    width: 17%;
 }
-.main-container{
-    display:flex;
-    height:40em;
+
+.main-container {
+    display: flex;
+    height: 40em;
 }
-.area{
-    width:83%;
+
+.area {
+    width: 83%;
 
 }
-.menu{
-    display:flex;
+
+.btnMenu {
+    display: none;
+    cursor:pointer;
+}
+
+.menu {
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
     background-color: #011C40;
-    font-size:1.2em;
-}
-.menu a{
-    text-decoration: none;
-}
-.container-completo{
-    width:90%;
-    height:auto;
-    margin:auto;
-    margin-top:4em;
-    padding:2em;
-}
-.container{
-    width:45%;
-    height:auto;
+    font-size: 1.2em;
+
 }
 
-.form-group{
-    max-width:100%;
-    display:flex;
+.menu a {
+    text-decoration: none;
+}
+
+.container-completo {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 4em;
+    padding: 2em;
+}
+
+.container {
+    width: 45%;
+    height: auto;
+}
+
+.form-group {
+    max-width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
-.escrito-entrar{
-    color:#032859;
-    font-size:3em;
+
+.escrito-entrar {
+    color: #032859;
+    font-size: 3em;
 }
-.form-control{
-    padding:1.6em;
-    width:70%;
+
+.form-control {
+    padding: 1.6em;
+    width: 70%;
 }
-.form-select-cadastro{
-    width:70%;
+
+.form-select-cadastro {
+    width: 70%;
 }
-.btn-primary{
+
+.btn-primary {
     background-color: #032859;
-    padding:0.8em;
-    width:200px;
+    padding: 0.8em;
+    width: 200px;
     font-size: 1.2em;
-    border:none;
+    border: none;
 }
-.campo-senha{
+
+.campo-senha {
     display: flex;
     align-items: center;
 }
-.formulario{
-    width:50%;
+
+.formulario {
+    width: 50%;
 }
-.lista-categorias{
+
+.lista-categorias {
     height: 300px;
     overflow-y: scroll;
-    border-top:solid 2px  #032859;
+    border-top: solid 2px #032859;
 }
-.lista_usuarios{
-    width:80%;
+
+.lista_usuarios {
+    width: 80%;
 }
-@media screen and (max-width:768px){
-    .container-completo{
+
+@media screen and (max-width:768px) {
+    .container-completo {
         flex-direction: column;
         margin-top: 0;
     }
-    .container{
+
+    .container {
         width: 100%;
     }
-    .formulario{
-        width:90%;
+
+    .formulario {
+        width: 90%;
     }
-    .color-text{
-        font-size:1.4em;
+
+    .color-text {
+        font-size: 1.4em;
     }
-    .menu{
+
+    .menu {
+        display: none;
+    }
+    .ativo {
+        margin-bottom:100px;
+        transition: left 0.3s ease;
+    }
+    #menu-ativo.ativo .menu {
+        display: flex;
         flex-direction: row;
-        font-size: 0.8em;
+        height:auto;
+        font-size:1em;
     }
-    .escolha-categoria{
-        width:80%;
-        padding:0.8em;
+
+    .btnMenu {
+        display: flex;
     }
-    .escolha-categoria h2{
-        font-size:1.7em;
+
+    .escolha-categoria {
+        width: 80%;
+        padding: 0.8em;
+    }
+
+    .escolha-categoria h2 {
+        font-size: 1.7em;
         text-align: center;
     }
-    .escolha-categoria .form-select-categoria{
-        width:90%;
+
+    .escolha-categoria .form-select-categoria {
+        width: 90%;
     }
-    .escolha-categoria .mb-3{
-        display:flex;
+
+    .escolha-categoria .mb-3 {
+        display: flex;
         justify-content: center;
         align-items: center;
     }
-    .main-container{
-       flex-direction: column;
+
+    .main-container {
+        flex-direction: column;
     }
-    .menu-container{
-        width:100%;
+
+    .menu-container {
+        width: 100%;
     }
-    .area{
-        width:100%;
+
+    .area {
+        width: 100%;
     }
-    .lista_usuarios{
-        width:90%;
+
+    .lista_usuarios {
+        width: 90%;
     }
-    
+
+}
+
+@media screen and (max-width:600px) {
+    #menu-ativo.ativo .menu {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 1em;
+    }
+
 }

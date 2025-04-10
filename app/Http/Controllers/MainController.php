@@ -98,6 +98,7 @@ class MainController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->role = $request->role;
         $user->save();
         return redirect()->route('lista_usuarios');
     }
