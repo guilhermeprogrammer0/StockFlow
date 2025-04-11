@@ -1,4 +1,4 @@
-<section class="menu-container" id="menu-ativo">
+<nav class="menu-container" id="menu-ativo">
     <div class="btnMenu"><i class="fa-solid fa-bars fa-3x color-text" id="btnMenu"></i></div>
     <ul class="menu h-full w-full">
         @can('admin')
@@ -16,4 +16,4 @@
         @endcan
     </ul>
     <script src="{{asset('assets/js/menu.js')}}"></script>
-</section>
+</nav>
