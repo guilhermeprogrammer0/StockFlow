@@ -1,6 +1,6 @@
 <x-main-layout titulo="Cadastro usuário" color="fundo-padrao">
   <x-logo-component />
-  <main class="main-container !h-190">
+  <main class="main-container !h-210">
     <x-menu-component />
     <x-area-component tipoAlinhamento="flex-column">
       <div class="container bg-white rounded-md">
