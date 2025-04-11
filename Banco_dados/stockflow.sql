@@ -27,12 +27,12 @@ CREATE TABLE IF NOT EXISTS `cache` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.cache: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.cache: ~4 rows (aproximadamente)
 INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1744050065),
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1744050065;', 1744050065),
-	('stockflow_cache_c13a8cf2674e608a996e98342053927d', 'i:1;', 1744049452),
-	('stockflow_cache_c13a8cf2674e608a996e98342053927d:timer', 'i:1744049452;', 1744049452);
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1744296108),
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1744296108;', 1744296108),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d', 'i:1;', 1744292559),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d:timer', 'i:1744292559;', 1744292559);
 
 -- Copiando estrutura para tabela stockflow.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `cache_locks` (
 -- Copiando estrutura para tabela stockflow.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.migrations: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.migrations: ~6 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(9, '0001_01_01_000000_create_users_table', 1),
 	(10, '0001_01_01_000001_create_cache_table', 1),
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
 -- Copiando estrutura para tabela stockflow.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `preco` decimal(8,2) NOT NULL,
   `quantidade` int NOT NULL,
   `categoria_id` bigint unsigned NOT NULL,
@@ -182,8 +182,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela stockflow.users: ~2 rows (aproximadamente)
 INSERT IGNORE INTO `users` (`id`, `name`, `role`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Guilherme', 'administrador', 'guilhermesouza120903@gmail.com', NULL, '$2y$12$CD5KpOZMj0U02W81RwGKJujy0oIesUEuEqWtI4lc7Bpf3lyYqvlPq', NULL, NULL, NULL, 'XKhVcgB4HPKPbbCMHAyN3wSUVXbTMSfwUK4MFnTr0pltPMPgdl9bq4mley38', '2025-04-04 22:45:32', '2025-04-07 17:50:43'),
-	(2, 'Teste', 'comum', 'teste@teste.com', NULL, '$2y$12$4BtyaSz2GwtET3fJ9DCw0u53rEEkz6YUrlOvfjHKm8gbfmmQNw53i', NULL, NULL, NULL, NULL, '2025-04-07 21:07:26', '2025-04-07 21:07:26');
+	(1, 'Guilherme', 'administrador', 'guilhermesouza120903@gmail.com', NULL, '$2y$12$CD5KpOZMj0U02W81RwGKJujy0oIesUEuEqWtI4lc7Bpf3lyYqvlPq', NULL, NULL, NULL, 'IHyw7AxVN0yqCmFxBaYyCpDADVVwfcaWEtXQloZ4SJKpZOKMFLNggkeS7kS4', '2025-04-04 22:45:32', '2025-04-07 17:50:43'),
+	(2, 'Teste', 'administrador', 'teste@teste.com', NULL, '$2y$12$9wt3QBW03dcWseuMs5OLy.pJqxGc8K5nN1ObG2FS2i.GJ3sW0dS1S', NULL, NULL, NULL, NULL, '2025-04-07 21:07:26', '2025-04-10 16:41:25');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
