@@ -1,6 +1,6 @@
 <x-main-layout titulo="Lista usuários" color="fundo-padrao">
     <x-logo-component />
-    <main class="main-container !h-130">
+    <main class="main-container">
         <x-menu-component />
         <x-area-component tipoAlinhamento="">
             <div class="lista_usuarios overflow-x-auto">
