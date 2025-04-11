@@ -50,7 +50,7 @@ class MainController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect()->route('escolha_categoria');
+        return redirect()->route('lista_usuarios');
     }
     public function lista_usuarios(){
         if(Gate::denies('admin')){

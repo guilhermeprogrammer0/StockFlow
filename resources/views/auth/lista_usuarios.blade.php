@@ -18,7 +18,7 @@
                     <tbody>
                         <tr>
                             <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->name}} </strong> @else {{$usuario->name}}  @endif </td>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->role}} </strong> @else {{$usuario->role}}  @endif </td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{\Illuminate\Support\Str::ucfirst($usuario->role)}} </strong> @else {{\Illuminate\Support\Str::ucfirst($usuario->role)}}  @endif </td>
                             <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->email}} </strong> @else {{$usuario->email}}  @endif </td>
                             <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}"><a href="{{route('editar_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-pen-to-square text-orange-500 m-1 cursor:pointer"></i></a> <a href="{{route('excluir_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-trash text-red-700 cursor:pointer"></i></a></td>
                         </tr>

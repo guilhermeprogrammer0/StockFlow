@@ -1,6 +1,6 @@
 <x-main-layout titulo="Confirmar exclusão" color="fundo-padrao">
     <x-logo-component />
-    <main class="main-container !h-130">
+    <main class="main-container">
         <x-menu-component />
         <x-area-component tipoAlinhamento="">
                 <div class="d-flex flex-column items-center justify-center bg-white p-5 rounded">

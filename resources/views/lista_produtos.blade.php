@@ -16,9 +16,9 @@
                 </div>
                 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{$produto->descricao}}</li>
-                    <li class="list-group-item">{{$produto->preco}}</li>
-                    <li class="list-group-item">{{$produto->quantidade}}</li>
+                    <li class="list-group-item">Descrição: {{$produto->descricao}}</li>
+                    <li class="list-group-item">Preço: R${{number_format($produto->preco, 2, ',', '.')}}</li>
+                    <li class="list-group-item">Quantidade: {{$produto->quantidade}}</li>
                     <li class="list-group-item text-center"><a href="#" class="btn btn-outline-primary btn-sm"> Mudar estoque </a> @can('admin')<a href="#" class="btn btn-outline-warning btn-sm"> Editar produto @endcan </a></li>
                  
 
