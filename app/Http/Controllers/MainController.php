@@ -118,8 +118,6 @@ class MainController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'role' => ['required', 'in:administrador,comum'],
                 'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
-                'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
-                'password_confirmation' => ['required', 'same:password'],
             ],
             [
                 'name.required' => 'O nome é obrigatório',
@@ -135,7 +133,6 @@ class MainController extends Controller
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
         $user->role = $request->role;
         $user->save();
         return redirect()->route('lista_usuarios');

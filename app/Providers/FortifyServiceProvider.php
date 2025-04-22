@@ -56,6 +56,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.resetar-senha',['request'=>$request]);
         });
        
+       
       
     }
 }
