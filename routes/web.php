@@ -19,8 +19,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cadastro_categorias',[ProductsController::class,'cadastro_categorias'])->name('cadastro_categorias');
     Route::post('/cadastro_categorias_submit',[ProductsController::class,'cadastro_categorias_submit'])->name('cadastro_categorias_submit');
     Route::get('/lista_produtos',[ProductsController::class,'lista_produtos'])->name('lista_produtos');
+});
 
 
+Route::middleware('guest')->group(function(){
+    Route::get('/confirmacao_usuario/{token}',[MainController::class,'confirmacaoUsuario'])->name('confirmacao_usuario');
+    Route::post('/novo_usuario_senha',[MainController::class,'novoUsuarioSenha'])->name('novo_usuario_senha');
+    Route::get('/boas-vindas',[MainController::class,'boasVindas'])->name('boas-vindas');
 });
 
 

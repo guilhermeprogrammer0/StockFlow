@@ -4,6 +4,6 @@
    <p class="absolute top-0 right-0 m-2">Olá, <strong> {{Auth::user()->name}}</strong>!</p>
    <form action="{{route('logout')}}" method="POST">
       @csrf
-      <button type="submit" class="absolute btn btn-danger bottom-0 right-0 m-2"> Sair </button>
+      <button type="submit" class="absolute fa-solid fa-right-from-bracket fa-2x bottom-0 right-0 m-2 text-red-600 cursor:pointer"></button>
    </form>
 </div>

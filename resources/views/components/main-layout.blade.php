@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/bootstrap.js')}}"></script>
-    <script src="https://kit.fontawesome.com/ae27920976.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
    
 </head>
 <body class="{{$color ?? white}}">

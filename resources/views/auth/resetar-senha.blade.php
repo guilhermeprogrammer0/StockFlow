@@ -32,7 +32,7 @@
           @error('password_confirmation')
               <span class="text-danger mt-1">{{$message}}</span>
       @enderror
-      <i class="fa-solid fa-eye" id="btn_senha"></i>
+      <i class="fa-solid fa-eye mt-2" id="btn_senha"></i>
       </div>
   
         </div>

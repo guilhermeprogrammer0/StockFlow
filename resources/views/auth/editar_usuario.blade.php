@@ -39,25 +39,7 @@
               @enderror
             </div>
           </div>
-          <div class="mb-3">
-            <div class="form-group">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control senha" id="password" name="password">
-              @error('password')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
-            </div>
-          </div>
-          <div class="mb-3 ">
-            <div class="form-group">
-              <label for="senha">Confirmar senha</label>
-              <input type="password" class="form-control senha" id="password_confirmation" name="password_confirmation">
-              @error('password_confirmation')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
-              <i class="fa-solid fa-eye mt-2" id="btn_senha"></i>
-            </div>
-          </div>
+      
           <div class="mb-3 text-center d-flex flex-column items-center">
             <button type="submit" class="btn btn-primary">Editar</button>
             <a href="{{route('lista_usuarios')}}" class="text-blue-100 mt-2">Voltar</a>

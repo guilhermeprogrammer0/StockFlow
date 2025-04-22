@@ -1,6 +1,6 @@
 <x-main-layout titulo="Cadastro usuário" color="fundo-padrao">
   <x-logo-component />
-  <main class="main-container !h-210">
+  <main class="main-container !h-180">
     <x-menu-component />
     <x-area-component tipoAlinhamento="flex-column">
       <div class="container bg-white rounded-md">
@@ -38,25 +38,7 @@
               @enderror
             </div>
           </div>
-          <div class="mb-3">
-            <div class="form-group">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control senha" id="password" placeholder="********" name="password">
-              @error('password')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
-            </div>
-          </div>
-          <div class="mb-3 ">
-            <div class="form-group">
-              <label for="senha">Confirmar senha</label>
-              <input type="password" class="form-control senha" id="password_confirmation" placeholder="********" name="password_confirmation">
-              @error('password_confirmation')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
-              <i class="fa-solid fa-eye mt-2" id="btn_senha"></i>
-            </div>
-          </div>
+    
           <div class="mb-3 text-center">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>
