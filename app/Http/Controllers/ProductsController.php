@@ -40,7 +40,7 @@ class ProductsController extends Controller
         $request->validate(
             [
             'nome' => 'required|min:5|max:50',
-            'descricao' => 'required|min:5|max:100',
+            'descricao' => 'required|min:3|max:100',
             'preco' => 'required|numeric',
             'quantidade' => 'required|integer',
             ],
