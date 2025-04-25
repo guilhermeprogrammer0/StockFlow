@@ -19,7 +19,7 @@
                     <li class="list-group-item">Descrição: {{$produto->descricao}}</li>
                     <li class="list-group-item">Preço: R${{number_format($produto->preco, 2, ',', '.')}}</li>
                     <li class="list-group-item">Quantidade: {{$produto->quantidade}}</li>
-                    <li class="list-group-item text-center"><a href="#" class="btn btn-outline-primary "> Mudar estoque </a> @can('admin')<a href="#" class="btn btn-outline-warning"> Editar produto @endcan </a></li>
+                    <li class="list-group-item text-center"><a href="#" class="btn btn-secondary "> Mudar estoque </a> @can('admin')<a href="#" class="btn btn-warning"> Editar produto @endcan </a></li>
                  
 
                 </ul>
