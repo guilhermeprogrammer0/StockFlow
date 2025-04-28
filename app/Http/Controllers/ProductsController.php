@@ -122,17 +122,11 @@ class ProductsController extends Controller
         return redirect()->route('lista_produtos');
     }
     public function mudar_estoque($id){
-        if(Gate::denies('admin')){
-            abort(403,'Você não tem permissão para acessar esse recurso');
-        }
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
         return view('mudar_estoque',compact('produto'));
     }
     public function mudar_estoque_submit(Request $request){
-        if(Gate::denies('admin')){
-            abort(403,'Você não tem permissão para acessar esse recurso');
-        }
         $request->validate([
             'quantidade' => 'required|integer',
             'tipo' => 'required|in:entrada,saida'
@@ -156,9 +150,6 @@ class ProductsController extends Controller
         return redirect()->route('lista_produtos');
     }
     public function movimentacoes(){
-        if(Gate::denies('admin')){
-            abort(403,'Você não tem permissão para acessar esse recurso');
-        }
         $movimentacoes = Movimentacao::with('produto')->get();
         return view('movimentacoes',compact('movimentacoes'));
     }

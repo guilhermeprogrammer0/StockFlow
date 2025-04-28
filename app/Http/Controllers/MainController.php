@@ -60,7 +60,7 @@ class MainController extends Controller
         if (!$user) {
             abort(404, 'Token inválido ou expirado');
         }
-        return view('auth.novo_usuario',compact('token'));
+        return view('auth.novo_usuario', compact('token'));
     }
     public function novoUsuarioSenha(Request $request)
     {
@@ -78,7 +78,7 @@ class MainController extends Controller
                 'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
             ]
         );
-        $user = User::where('token',$request->token)->first();
+        $user = User::where('token', $request->token)->first();
         if (!$user) {
             return redirect()->back()->withErrors(['token' => 'Token inválido ou expirado']);
         }
@@ -88,7 +88,8 @@ class MainController extends Controller
         $user->save();
         return redirect()->route('boas-vindas');
     }
-    public function boasVindas(){
+    public function boasVindas()
+    {
         return view('auth.boas-vindas');
     }
     public function lista_usuarios()
@@ -101,24 +102,25 @@ class MainController extends Controller
     }
     public function editar_usuario($id)
     {
-        if (Gate::denies('admin')) {
-            abort(403, 'Você não tem permissão para acessar esse recurso');
-        }
         $id = Crypt::decrypt($id);
         $user = User::find($id);
         return view('auth.editar_usuario', ['usuario' => $user]);
     }
     public function editar_usuario_submit(Request $request)
     {
-        if (Gate::denies('admin')) {
-            abort(403, 'Você não tem permissão para acessar esse recurso');
+        $regras = [ 
+            'name' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'in:administrador,comum'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)]
+        ];
+                
+        if(Auth::user()->id === $request->id){
+            $regras = [
+            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
+            'password_confirmation' => ['required', 'same:password'],
+            ];
         }
-        $request->validate(
-            [
-                'name' => ['required', 'string', 'max:255'],
-                'role' => ['required', 'in:administrador,comum'],
-                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
-            ],
+        $request->validate($regras,
             [
                 'name.required' => 'O nome é obrigatório',
                 'name.string' => 'O campo nome tem que ser um texto',
@@ -128,32 +130,76 @@ class MainController extends Controller
                 'email.required' => 'O email é obrigatório',
                 'email.email' => 'O email deve ser válido',
                 'email.unique' => 'o email informado está indisponível',
+                'password.required' => 'A senha é obrigatória',
+                'password.min' => 'A senha tem que ter no mínimo :min caracteres',
+                'password.regex' => 'Pelo menos uma letra maiúscula, uma minúscula e um número',
+                'password_confirmation.required' => 'A confirmação de senha é obrigatória',
+                'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
             ]
         );
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role = $request->role;
+        if(Auth::user()->id === $request->id){
+        $user->password = bcrypt($request->password);
+        }
         $user->save();
         return redirect()->route('lista_usuarios');
     }
+    public function editar_usuario_submit_comum(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
+                'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
+                'password_confirmation' => ['required', 'same:password'],
+            ],
+            [
+                'name.required' => 'O nome é obrigatório',
+                'name.string' => 'O campo nome tem que ser um texto',
+                'name.max' => 'O campo nome não pode ter mais que :max caracteres',
+                'email.required' => 'O email é obrigatório',
+                'email.email' => 'O email deve ser válido',
+                'email.unique' => 'o email informado está indisponível',
+                'password.required' => 'A senha é obrigatória',
+                'password.min' => 'A senha tem que ter no mínimo :min caracteres',
+                'password.regex' => 'Pelo menos uma letra maiúscula, uma minúscula e um número',
+                'password_confirmation.required' => 'A confirmação de senha é obrigatória',
+                'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
+            ]
+        );
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect()->route('perfil_comum');
+    }
     public function excluir_usuario($id)
     {
-        if (Gate::denies('admin')) {
-            abort(403, 'Você não tem permissão para acessar esse recurso');
-        }
         $id = Crypt::decrypt($id);
         $user = User::find($id);
         return view('auth.exclusao_confirmacao', ['usuario' => $user]);
     }
     public function excluir_usuario_confirma($id)
     {
-        if (Gate::denies('admin')) {
-            abort(403, 'Você não tem permissão para acessar esse recurso');
-        }
         $id = Crypt::decrypt($id);
         $user = User::find($id);
-        $user->delete();
-        return redirect()->route('lista_usuarios');
+        if (Auth::user()->role === 'administrador') {
+            $user->delete();
+            return redirect()->route('lista_usuarios');
+        }
+        else{
+            $user->delete();
+        }
+    }
+    public function perfil_comum()
+    {
+        if (Gate::denies('comum')) {
+            abort(404, 'Página não encontrada');
+        }
+        return view('auth.perfil_comum');
     }
 }

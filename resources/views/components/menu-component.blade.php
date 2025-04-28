@@ -12,7 +12,7 @@
         <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="{{route('lista_usuarios')}}">Lista Usuários</a></li>
         @endcan
         @can('comum')
-        <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="#">Editar/Excluir Usuário</a></li>
+        <li class="p-2 rounded hover:bg-blue-700 text-white cursor:pointer"><a class="text-white" href="{{route('perfil_comum')}}">Editar/Excluir Usuário</a></li>
         @endcan
     </ul>
     <script src="{{asset('assets/js/menu.js')}}"></script>

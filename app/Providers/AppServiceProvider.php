@@ -29,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('comum',function(User $user){
             return $user->role == 'comum';
         });
+        Gate::define('senha',function(User $user, User $usuario){
+            return $user->id === $usuario->id;
+        });
         
         // Gate::define('ver_teste', [PolicyPagina::class, 'ver_teste']);
     }

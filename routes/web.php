@@ -14,6 +14,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/editar_usuario_submit',[MainController::class,'editar_usuario_submit'])->name('editar_usuario_submit');
     Route::get('/excluir_usuarios/{id}',[MainController::class,'excluir_usuario'])->name('excluir_usuario');
     Route::get('/excluir_usuario_confirma/{id}',[MainController::class,'excluir_usuario_confirma'])->name('excluir_usuario_confirma');
+    Route::get('/perfil_comum',[MainController::class,'perfil_comum'])->name('perfil_comum');
+    Route::post('/editar_usuario_submit_comum',[MainController::class,'editar_usuario_submit_comum'])->name('editar_usuario_submit_comum');
     Route::get('/cadastro_produtos',[ProductsController::class,'cadastro_produtos'])->name('cadastro_produtos');
     Route::post('/cadastro_produtos_submit',[ProductsController::class,'cadastro_produtos_submit'])->name('cadastro_produtos_submit');
     Route::get('/editar_produto/{id}',[ProductsController::class,'editar_produto'])->name('editar_produto');
