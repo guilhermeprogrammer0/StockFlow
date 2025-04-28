@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container !h-190">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="flex-column">
+        <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
             <div><h2>Cadastrar</h2></div>
             <form action="{{route('cadastro_produtos_submit')}}" method="post" novalidate>
@@ -10,7 +10,7 @@
                 <div class="mb-3">
                     <div>
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Notebook Dell" name="nome" value="{{old('nome')}}">
+                        <input type="text" class="form-control" id="nome" name="nome" value="{{old('nome')}}">
                         @error('nome')
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror
@@ -26,14 +26,14 @@
                 <div class="mb-3">
                     <div class="m-auto">
                         <label for="preco">Preço</label>
-                        <input type="text" class="form-control" id="descricao" placeholder="250,00" name="preco" value="{{old('preco')}}">
+                        <input type="text" class="form-control" id="descricao" name="preco" value="{{old('preco')}}">
                         @error('preco')
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror
                     </div>
                     <div>
                         <label for="quantidade">Quantidade</label>
-                        <input type="text" class="form-control" id="descricao" placeholder="6" name="quantidade" value="{{old('quantidade')}}">
+                        <input type="text" class="form-control" id="descricao" name="quantidade" value="{{old('quantidade')}}">
                         @error('quantidade')
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror

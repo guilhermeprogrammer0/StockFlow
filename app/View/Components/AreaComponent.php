@@ -12,9 +12,12 @@ class AreaComponent extends Component
      * Create a new component instance.
      */
     public string $tipoAlinhamento;
-    public function __construct(string $tipoAlinhamento)
+    public string $tipoAlinhamento2;
+    public function __construct($tipoAlinhamento = 'flex-row', $tipoAlinhamento2 = 'items-center')
     {
         $this->tipoAlinhamento = $tipoAlinhamento;
+        $this->tipoAlinhamento2 = $tipoAlinhamento2;
+
     }
 
     /**

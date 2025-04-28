@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="flex-column">
+        <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div>
                     <h2 class="text-center bg-blue-500 text-white">Mudar estoque</h2>

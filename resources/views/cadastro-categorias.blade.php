@@ -1,8 +1,8 @@
 <x-main-layout titulo="Cadastro categoria" color="fundo-padrao">
     <x-logo-component />
     <main class="main-container">
-        <x-menu-component />
-        <x-area-component tipoAlinhamento="flex-column">
+        <x-menu-component/>
+        <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div>
                     <h2>Cadastrar</h2>

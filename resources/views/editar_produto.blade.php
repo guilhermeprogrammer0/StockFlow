@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container !h-190">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="flex-column">
+        <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
             <div><h2>Editar</h2></div>
             <form action="{{route('atualizar_produto')}}" method="post" novalidate>

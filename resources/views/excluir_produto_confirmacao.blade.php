@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container" >
         <x-menu-component />
-        <x-area-component tipoAlinhamento="">
+        <x-area-component>
                 <div class="d-flex flex-column items-center justify-center bg-white p-5 rounded">
                     <h2>Deseja mesmo excluir <strong> {{$produto->nome}}</strong>?</h2>
                     <div>

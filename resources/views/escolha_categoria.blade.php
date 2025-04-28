@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="flex-column">
+        <x-area-component>
             <section class="escolha-categoria bg-white p-3 rounded">
                 <div class="mb-3">
                     <h2>Qual categoria de produtos você gostaria de ver?</h2>

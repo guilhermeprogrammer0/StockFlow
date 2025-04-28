@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento=""> 
+        <x-area-component> 
             @if(count($produtos) === 0)
             <h2 class="text-white bg-red-900 rounded p-1">Não foram encontrados produtos</h2>
             @endif

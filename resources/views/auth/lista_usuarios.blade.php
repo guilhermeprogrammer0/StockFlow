@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="">
+        <x-area-component tipoAlinhamento2="items-start">
             <div class="lista_usuarios overflow-x-auto">
                 <table class="table table-striped">
                     <thead>

@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento="">
+        <x-area-component tipoAlinhamento2="items-start">
             <div class="lista_usuarios overflow-x-auto">
             @if(count($movimentacoes) === 0)
             <h2 class="text-white text-center bg-red-900 rounded p-1">Não foram encontradas movimentações</h2>
@@ -18,7 +18,7 @@
                     <tbody>
                     @foreach($movimentacoes as $movimentacao)
                         <tr>
-                           <td>{{$movimentacao->produto->nome}}</td>
+                           <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
                            <td>{{$movimentacao->quantidade}}</td>
                            <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
                         </tr>

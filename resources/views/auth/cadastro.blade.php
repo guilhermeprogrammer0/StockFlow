@@ -2,7 +2,7 @@
   <x-logo-component />
   <main class="main-container !h-180">
     <x-menu-component />
-    <x-area-component tipoAlinhamento="flex-column">
+    <x-area-component>
       <div class="container bg-white rounded-md">
         <h1 class="escrito-entrar text-black text-center mt-50">Cadastrar</h1>
         <form action="{{route('cadastro_usuario')}}" method="POST" novalidate>
