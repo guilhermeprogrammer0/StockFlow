@@ -27,12 +27,24 @@ CREATE TABLE IF NOT EXISTS `cache` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.cache: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.cache: ~15 rows (aproximadamente)
 INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1743608338),
-	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1743608338;', 1743608338),
-	('stockflow_cache_c6be2cf7c13d9a527ee2fe401bbae3c7', 'i:2;', 1743792195),
-	('stockflow_cache_c6be2cf7c13d9a527ee2fe401bbae3c7:timer', 'i:1743792195;', 1743792195);
+	('stockflow_cache_353c3c0c8a8c9f563eea13fe3d028a4d', 'i:1;', 1745490000),
+	('stockflow_cache_353c3c0c8a8c9f563eea13fe3d028a4d:timer', 'i:1745490000;', 1745490000),
+	('stockflow_cache_557387a92deeb2c9636546e0c1547a35', 'i:1;', 1745837561),
+	('stockflow_cache_557387a92deeb2c9636546e0c1547a35:timer', 'i:1745837561;', 1745837561),
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf', 'i:1;', 1745336149),
+	('stockflow_cache_748dc2aa4cdd5766d0edf314859d4adf:timer', 'i:1745336149;', 1745336149),
+	('stockflow_cache_af9a8062bd9b2056216fed8db31a5728', 'i:1;', 1745490239),
+	('stockflow_cache_af9a8062bd9b2056216fed8db31a5728:timer', 'i:1745490239;', 1745490239),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d', 'i:1;', 1744292559),
+	('stockflow_cache_c13a8cf2674e608a996e98342053927d:timer', 'i:1744292559;', 1744292559),
+	('stockflow_cache_ea5175c690d8ec33a710b5a3460160b3', 'i:2;', 1745581033),
+	('stockflow_cache_ea5175c690d8ec33a710b5a3460160b3:timer', 'i:1745581033;', 1745581033),
+	('stockflow_cache_guiherme@gmail.com|127.0.0.1', 'i:1;', 1745490001),
+	('stockflow_cache_guiherme@gmail.com|127.0.0.1:timer', 'i:1745490001;', 1745490001),
+	('stockflow_cache_guilhermesouza120903@gmail.com|127.0.0.1', 'i:1;', 1745336149),
+	('stockflow_cache_guilhermesouza120903@gmail.com|127.0.0.1:timer', 'i:1745336149;', 1745336149);
 
 -- Copiando estrutura para tabela stockflow.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -43,6 +55,17 @@ CREATE TABLE IF NOT EXISTS `cache_locks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.cache_locks: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela stockflow.categorias
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Copiando dados para a tabela stockflow.categorias: ~2 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
@@ -97,14 +120,30 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.migrations: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.migrations: ~7 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
-	(1, '0001_01_01_000000_create_users_table', 1),
-	(2, '0001_01_01_000001_create_cache_table', 1),
-	(3, '0001_01_01_000002_create_jobs_table', 1),
-	(4, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1);
+	(9, '0001_01_01_000000_create_users_table', 1),
+	(10, '0001_01_01_000001_create_cache_table', 1),
+	(11, '0001_01_01_000002_create_jobs_table', 1),
+	(12, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1),
+	(14, '2025_04_07_134055_create_products_table', 2),
+	(15, '2025_04_07_145507_create_categorias_table', 3),
+	(16, '2025_04_28_121810_create_movimentacoes_table', 4);
+
+-- Copiando estrutura para tabela stockflow.movimentacoes
+CREATE TABLE IF NOT EXISTS `movimentacoes` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `tipo` enum('entrada','saida') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantidade` int NOT NULL,
+  `product_id` bigint unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Copiando dados para a tabela stockflow.movimentacoes: ~5 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.password_reset_tokens
 CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
@@ -115,8 +154,21 @@ CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.password_reset_tokens: ~0 rows (aproximadamente)
-INSERT IGNORE INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
-	('guilhermesouza120903@gmail.com', '$2y$12$7kWJzay1TdookLkhZRVFjOwBggfdheUMeTvRC0EXyMzWvw/4i9wR.', '2025-04-02 18:42:36');
+
+-- Copiando estrutura para tabela stockflow.products
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preco` decimal(8,2) NOT NULL,
+  `quantidade` int NOT NULL,
+  `categoria_id` bigint unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Copiando dados para a tabela stockflow.products: ~3 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (
@@ -137,9 +189,11 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_secret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `two_factor_recovery_codes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
@@ -150,12 +204,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.users: ~4 rows (aproximadamente)
-INSERT IGNORE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Guilherme', 'gui@mail.com', NULL, '$2y$12$GUeYKGgKZOcm1SjAtK2edeUV3i8/bPZsVpDOhUUZDzRgdaPXZ5ItK', NULL, NULL, NULL, 'lJgVGjelEdkd3AEhXh4Scmp4HXyjqQjDr0NuxC2Z4JN8nYgsu9hRdEYxDkHp', '2025-03-31 20:04:34', '2025-03-31 20:05:04'),
-	(2, 'teste', 'teste@gmail.com', NULL, '$2y$12$WtDRzT8QyUBbxh0kuUfB/.6Ux1eDgf/wDbA.EHxM58m/VXI/Jj.eO', NULL, NULL, NULL, NULL, '2025-03-31 20:21:55', '2025-03-31 20:21:55'),
-	(3, 'Guilherme', 'guilhermesouza120903@gmail.com', NULL, '$2y$12$Vs27q8Wu7n7NMncvKk/KV.gPdjIe.gHHYBD4lMjc7tEyEdaqMwNRi', NULL, NULL, NULL, 'M0vv4tgefd4i8jYWICNaUBVlA2JOfOciAng4PQ4CWAE9ds4tr1hK8wN9evFk', '2025-03-31 21:14:04', '2025-04-02 18:37:51'),
-	(4, 'Junior', 'jr.ferreira0018@gmail.com', NULL, '$2y$12$OtzbZomA53bsbQfRkBKc9e5xNg7QwUkSAXkdiqegnMjyfM6jtOyvi', NULL, NULL, NULL, NULL, '2025-03-31 21:30:41', '2025-03-31 21:30:41');
+-- Copiando dados para a tabela stockflow.users: ~2 rows (aproximadamente)
+INSERT IGNORE INTO `users` (`id`, `name`, `role`, `email`, `token`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Guilherme', 'administrador', 'guilherme@gmail.com', NULL, '2025-04-22 15:22:32', '$2y$12$r1bPWmN2jwq4GIASMYAlMuy7LXCnvYYIG7VG9oQWVG4qAt6Q03E9e', NULL, NULL, NULL, NULL, NULL, NULL),
+	(2, 'Teste', 'comum', 'teste@gmail.com', NULL, '2025-04-24 13:18:53', '$2y$12$xo6sHNS6.vEidnAM3mj.qO7J15f6Te7FwKkcJytUsfsDvwgaoOqkm', NULL, NULL, NULL, 'cdNjmpx68X9ZiWjV0vrACvMZVYndUrivOVCeEPj4ZrxQdFG5XfulSpAqCiGD', '2025-04-24 13:18:30', '2025-04-24 13:22:53');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

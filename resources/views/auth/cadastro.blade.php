@@ -10,7 +10,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Nome</label>
-              <input type="text" class="form-control" id="name" placeholder="João" name="name">
+              <input type="text" class="form-control" id="name" placeholder="João" name="name" value="{{old('name')}}">
               @error('name')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
@@ -32,7 +32,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Usuário</label>
-              <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email">
+              <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email" value="{{old('email')}}">
               @error('email')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror

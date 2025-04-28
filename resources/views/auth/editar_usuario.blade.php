@@ -11,7 +11,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{$usuario->name}}">
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name',$usuario->name)}}">
               @error('name')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
@@ -33,7 +33,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Usuário</label>
-              <input type="email" class="form-control" id="email" name="email" value="{{$usuario->email}}">
+              <input type="email" class="form-control" id="email" name="email" value="{{old('email',$usuario->email)}}">
               @error('email')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror

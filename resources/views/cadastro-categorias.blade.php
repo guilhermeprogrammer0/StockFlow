@@ -34,7 +34,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{$categoria->nome}}</td>
-                                    <td> <a href="#" class="btn btn-danger">Excluir</a> </td>
+                                    <td> <a href="{{route('excluir_categoria',['id'=>Crypt::encrypt($categoria->id)])}}" class="btn btn-danger">Excluir</a> </td>
                                 </tr>
                             </tbody>
                             @endforeach

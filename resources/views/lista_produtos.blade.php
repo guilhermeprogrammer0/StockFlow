@@ -11,21 +11,17 @@
                 <div class="card-header relative">
                     <h2>{{$produto->nome}}</h2>
                     @can('admin')
-                    <i class="fa-solid fa-delete-left  absolute top-1 right-1 text-red-700 cursor-pointer"></i>
+                    <a href="{{route('excluir_produto',['id'=>Crypt::encrypt($produto->id)])}}"><i class="fa-solid fa-delete-left  absolute top-1 right-1 text-red-700 cursor-pointer"></i></a>
                     @endcan
-                </div>
-                
+                </div>  
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Descrição: {{$produto->descricao}}</li>
                     <li class="list-group-item">Preço: R${{number_format($produto->preco, 2, ',', '.')}}</li>
                     <li class="list-group-item">Quantidade: {{$produto->quantidade}}</li>
-                    <li class="list-group-item text-center"><a href="#" class="btn btn-secondary "> Mudar estoque </a> @can('admin')<a href="#" class="btn btn-warning"> Editar produto @endcan </a></li>
-                 
-
+                    <li class="list-group-item text-center"><a href="{{route('mudar_estoque',['id'=>Crypt::encrypt($produto->id)])}}" class="btn btn-secondary "> Mudar estoque </a> @can('admin')<a href="{{route('editar_produto',['id'=>Crypt::encrypt($produto->id)])}}" class="btn btn-warning"> Editar produto @endcan </a></li>
                 </ul>
             </div>
-
             @endforeach
         </x-area-component>
-        <main>
+</main>
 </x-main-layout>
