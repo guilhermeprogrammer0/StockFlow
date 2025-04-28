@@ -5,7 +5,7 @@
     <x-area-component>
       <div class="container bg-white rounded-md">
         <h1 class="escrito-entrar text-black text-center mt-50">Editar usuário</h1>
-        <form action="{{Auth::user()->role === 'administrador' ? route('editar_usuario_submit') : route('editar_usuario_submit_comum') }}" method="POST" novalidate>
+        <form action="{{ route('editar_usuario_submit')}}" method="POST" novalidate>
           @csrf
           <input type="hidden" name="id" value="{{$usuario->id}}">
           <div class="mb-3">

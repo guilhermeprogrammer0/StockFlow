@@ -110,7 +110,6 @@ class MainController extends Controller
     {
         $regras = [ 
             'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'in:administrador,comum'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)]
         ];
                 
@@ -119,6 +118,9 @@ class MainController extends Controller
             'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             'password_confirmation' => ['required', 'same:password'],
             ];
+        }
+        if(Auth::user()->role === 'administrador'){
+              $regras = ['role' => ['required', 'in:administrador,comum']];
         }
         $request->validate($regras,
             [
@@ -140,42 +142,19 @@ class MainController extends Controller
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = $request->role;
         if(Auth::user()->id === $request->id){
         $user->password = bcrypt($request->password);
         }
+        if(Auth::user()->role === 'administrador'){
+            $user->role = $request->role;
+            }
         $user->save();
-        return redirect()->route('lista_usuarios');
-    }
-    public function editar_usuario_submit_comum(Request $request)
-    {
-        $request->validate(
-            [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
-                'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
-                'password_confirmation' => ['required', 'same:password'],
-            ],
-            [
-                'name.required' => 'O nome é obrigatório',
-                'name.string' => 'O campo nome tem que ser um texto',
-                'name.max' => 'O campo nome não pode ter mais que :max caracteres',
-                'email.required' => 'O email é obrigatório',
-                'email.email' => 'O email deve ser válido',
-                'email.unique' => 'o email informado está indisponível',
-                'password.required' => 'A senha é obrigatória',
-                'password.min' => 'A senha tem que ter no mínimo :min caracteres',
-                'password.regex' => 'Pelo menos uma letra maiúscula, uma minúscula e um número',
-                'password_confirmation.required' => 'A confirmação de senha é obrigatória',
-                'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
-            ]
-        );
-        $user = User::find($request->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return redirect()->route('perfil_comum');
+        if(Auth::user()->role === 'administrador'){
+            return redirect()->route('lista_usuarios');
+        }
+        else if(Auth::user()->role === 'comum'){
+            return redirect()->route('perfil_comum');
+        }
     }
     public function excluir_usuario($id)
     {
@@ -191,8 +170,9 @@ class MainController extends Controller
             $user->delete();
             return redirect()->route('lista_usuarios');
         }
-        else{
+        else if(Auth::user()->role === 'comum'){
             $user->delete();
+            return redirect()->route('login');
         }
     }
     public function perfil_comum()
