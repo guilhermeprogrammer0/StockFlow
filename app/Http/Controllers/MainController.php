@@ -113,14 +113,13 @@ class MainController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)]
         ];
                 
-        if(Auth::user()->id === $request->id){
-            $regras = [
-            'password' => ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
-            'password_confirmation' => ['required', 'same:password'],
-            ];
+        if(Auth::user()->id === intval($request->id)){
+            $regras['password'] = ['required', 'string', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'];
+            $regras['password_confirmation'] = ['required', 'same:password'];
+
         }
         if(Auth::user()->role === 'administrador'){
-              $regras = ['role' => ['required', 'in:administrador,comum']];
+              $regras['role'] = ['required', 'in:administrador,comum'];
         }
         $request->validate($regras,
             [
@@ -142,7 +141,7 @@ class MainController extends Controller
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        if(Auth::user()->id === $request->id){
+        if(Auth::user()->id ===  intval($request->id)){
         $user->password = bcrypt($request->password);
         }
         if(Auth::user()->role === 'administrador'){
