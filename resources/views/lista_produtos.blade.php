@@ -17,7 +17,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Descrição: {{$produto->descricao}}</li>
                     <li class="list-group-item">Preço: R${{number_format($produto->preco, 2, ',', '.')}}</li>
-                    <li class="list-group-item">Quantidade: {{$produto->quantidade}}</li>
+                    <li @class(['list-group-item','text-red-500'=>$produto->quantidade ===0])>Quantidade: {{$produto->quantidade}}</li>
                     <li class="list-group-item text-center"><a href="{{route('mudar_estoque',['id'=>Crypt::encrypt($produto->id)])}}" class="btn btn-secondary "> Mudar estoque </a> @can('admin')<a href="{{route('editar_produto',['id'=>Crypt::encrypt($produto->id)])}}" class="btn btn-warning"> Editar produto @endcan </a></li>
                 </ul>
             </div>
