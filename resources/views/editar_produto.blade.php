@@ -8,20 +8,18 @@
             <form action="{{route('atualizar_produto')}}" method="post" novalidate>
                 @csrf
                 <input type="hidden" name="id" value="{{$produto->id}}">
+                <div>
+                    <label for="codigo">Código</label>
+                        <input class="form-control" type="text" id="codigo" name="codigo" value="{{old('codigo',$produto->codigo)}}">
+                        @error('codigo')
+                        <span class="text-danger mt-1">{{$message}}</span>
+                        @enderror
+                    </div>
                 <div class="mb-3">
                     <div>
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" id="nome" placeholder="Notebook Dell" name="nome" value="{{old('nome',$produto->nome)}}">
                         @error('nome')
-                        <span class="text-danger mt-1">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div>
-                    <label for="descricao">Descrição</label>
-                        <textarea class="form-control" placeholder="" rows="2" id="descricao" name="descricao">
-                        {{old('descricao',$produto->descricao)}}
-                        </textarea>
-                        @error('descricao')
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror
                     </div>
@@ -36,6 +34,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label for="categoria">Categoria</label>
                     <div>
                         <select class="form-select-cadastro p-3 border bg-white" name="categoria">
                             <option value="0" selected>Selecione</option>
@@ -43,10 +42,10 @@
                         <option value="{{$categoria->id}}"{{ $categoria->id == $produto->categoria_id ? 'selected' : '' }}>{{$categoria->nome}}</option>
                         @endforeach
                         </select>
-                        @error('categoria')
+                    </div>
+                    @error('categoria')
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror
-                    </div>
                     </div>
                     <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Editar</button>
