@@ -203,6 +203,7 @@ class MainController extends Controller
                 'cnpj.required' => 'O campo CNPJ é obrigatório',
                 'cnpj.min' => 'O campo CNPJ deve ter no mínimo :min caracteres',
                 'cnpj.max' => 'O campo CNPJ deve ter no máximo :max caracteres',
+                'cnpj.unique' => 'CNPJ indisponível',
                 'email.required' => 'O email é obrigatório',
                 'email.email' => 'O email deve ser válido',
                 'email.unique' => 'o email informado está indisponível',

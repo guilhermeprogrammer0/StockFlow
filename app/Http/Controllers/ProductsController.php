@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Fornecedor;
 use App\Models\Movimentacao;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Gate;
@@ -176,6 +177,7 @@ class ProductsController extends Controller
         Movimentacao::create([
             'tipo' => $request->tipo,
             'quantidade' => $request->quantidade,
+            'data'=> Carbon::now(),
             'product_id' => $request->product_id
         ]);
         return redirect()->route('lista_produtos');

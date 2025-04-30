@@ -14,6 +14,7 @@
                             <th scope="col">Fornecedor</th>
                             <th scope="col">Quantidade Movimentada</th>
                             <th scope="col">Tipo de movimentação</th>
+                            <th scope="col">Data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +24,8 @@
                            <td >@if($movimentacao->tipo === 'entrada') {{$movimentacao->produto->fornecedor->nome}} @else ----- @endif </td>
                            <td>{{$movimentacao->quantidade}}</td>
                            <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
+                           <td>{{\Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y')}}</td>
+
                         </tr>
                     @endforeach
                     @endif
