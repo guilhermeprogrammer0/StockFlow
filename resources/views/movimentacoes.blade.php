@@ -11,6 +11,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
+                            <th scope="col">Fornecedor</th>
                             <th scope="col">Quantidade Movimentada</th>
                             <th scope="col">Tipo de movimentação</th>
                         </tr>
@@ -19,6 +20,7 @@
                     @foreach($movimentacoes as $movimentacao)
                         <tr>
                            <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
+                           <td >@if($movimentacao->tipo === 'entrada') {{$movimentacao->produto->fornecedor->nome}} @else ----- @endif </td>
                            <td>{{$movimentacao->quantidade}}</td>
                            <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
                         </tr>

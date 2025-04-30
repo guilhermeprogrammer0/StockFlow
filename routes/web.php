@@ -15,6 +15,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/excluir_usuarios/{id}',[MainController::class,'excluir_usuario'])->name('excluir_usuario');
     Route::get('/excluir_usuario_confirma/{id}',[MainController::class,'excluir_usuario_confirma'])->name('excluir_usuario_confirma');
     Route::get('/perfil_comum',[MainController::class,'perfil_comum'])->name('perfil_comum');
+    Route::get('/cadastro_fornecedores',[MainController::class,'cadastro_fornecedores'])->name('cadastro_fornecedores');
+    Route::post('/cadastro_fornecedores_submit',[MainController::class,'cadastro_fornecedores_submit'])->name('cadastro_fornecedores_submit');
+    Route::get('/lista_fornecedores',[MainController::class,'lista_fornecedores'])->name('lista_fornecedores');
+    Route::get('/editar_fornecedor/{id}',[MainController::class,'editar_fornecedor'])->name('editar_fornecedor');
+    Route::get('/excluir_fornecedor/{id}',[MainController::class,'excluir_fornecedor'])->name('excluir_fornecedor');
+    Route::get('/excluir_fornecedor_confirma/{id}',[MainController::class,'excluir_fornecedor_confirma'])->name('excluir_fornecedor_confirma');
+    Route::post('/editar_fornecedor_submit',[MainController::class,'editar_fornecedor_submit'])->name('editar_fornecedor_submit');
     Route::get('/cadastro_produtos',[ProductsController::class,'cadastro_produtos'])->name('cadastro_produtos');
     Route::post('/cadastro_produtos_submit',[ProductsController::class,'cadastro_produtos_submit'])->name('cadastro_produtos_submit');
     Route::get('/editar_produto/{id}',[ProductsController::class,'editar_produto'])->name('editar_produto');

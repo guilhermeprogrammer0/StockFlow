@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Fornecedor;
 use App\Models\Movimentacao;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -38,7 +39,8 @@ class ProductsController extends Controller
             abort(403, 'Você não tem permissão para acessar esse recurso');
         }
         $categorias = Categoria::all();
-        return view('cadastro-produtos', ['categorias' => $categorias]);
+        $fornecedores = Fornecedor::all();
+        return view('cadastro-produtos', ['categorias' => $categorias,'fornecedores'=>$fornecedores]);
     }
     public function cadastro_produtos_submit(Request $request)
     {
@@ -52,6 +54,7 @@ class ProductsController extends Controller
                 'preco' => ['required', 'numeric'],
                 'quantidade' => ['required', 'integer'],
                 'categoria' => ['required', 'exists:categorias,id'],
+                'fornecedor' => ['required', 'exists:fornecedores,id'],
             ],
             [
                 'nome.required' => 'O campo nome é obrigatório',
@@ -65,7 +68,9 @@ class ProductsController extends Controller
                 'quantidade.required' => 'O campo quantidade é obrigatório',
                 'quantidade.integer' => 'O campo quantidade precisa ser um número',
                 'categoria.required' => 'O campo categoria é obrigatório',
-                'categoria.exists' => 'Precisa ser um valor válido'
+                'categoria.exists' => 'Precisa ser um valor válido',
+                'fornecedor.required' => 'O campo fornecedor é obrigatório',
+                'fornecedor.exists' => 'Precisa ser um valor válido'
 
             ]
         );
@@ -75,6 +80,7 @@ class ProductsController extends Controller
         $produto->preco = $request->preco;
         $produto->quantidade = $request->quantidade;
         $produto->categoria_id = $request->categoria;
+        $produto->fornecedor_id = $request->fornecedor;
         $produto->save();
 
         return redirect()->route('escolha_categoria');
@@ -84,7 +90,8 @@ class ProductsController extends Controller
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
         $categorias = Categoria::all();
-        return view('editar_produto', compact('produto', 'categorias'));
+        $fornecedores = Fornecedor::all();
+        return view('editar_produto', compact('produto', 'categorias','fornecedores'));
     }
     public function atualizar_produto(Request $request)
     {
@@ -97,6 +104,7 @@ class ProductsController extends Controller
                 'nome' => ['required', 'min:5', 'max:50'],
                 'preco' => ['required', 'numeric'],
                 'categoria' => ['required', 'exists:categorias,id'],
+                'fornecedor' => ['required', 'exists:fornecedores,id'],
             ],
             [
                 'nome.required' => 'O campo nome é obrigatório',
@@ -108,7 +116,9 @@ class ProductsController extends Controller
                 'preco.required' => 'O campo preço é obrigatório',
                 'preco.numeric' => 'Precisar ser um valor válido',
                 'categoria.required' => 'O campo categoria é obrigatório',
-                'categoria.exists' => 'Precisa ser um valor válido'
+                'categoria.exists' => 'Precisa ser um valor válido',
+                'fornecedor.required' => 'O campo fornecedor é obrigatório',
+                'fornecedor.exists' => 'Precisa ser um valor válido'
             ]
         );
        
@@ -117,7 +127,8 @@ class ProductsController extends Controller
             'codigo' => $request->codigo,
             'nome' => $request->nome,
             'preco' => $request->preco,
-            'categoria_id' => $request->categoria
+            'categoria_id' => $request->categoria,
+            'fornecedor_id' => $request->fornecedor
         ]);
        session(['categoria' => $request->categoria]);
         return redirect()->route('lista_produtos');

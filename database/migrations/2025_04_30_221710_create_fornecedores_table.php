@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-                $table->string('codigo', 100)->unique()->nullable(false)->after('id');
+        Schema::create('fornecedores', function (Blueprint $table) {
+            $table->id(); 
+            $table->string('nome',100);
+            $table->string('cnpj', 14)->unique(); 
+            $table->string('email')->unique();
+            $table->timestamps();
         });
     }
 
@@ -21,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fornecedores');
     }
 };

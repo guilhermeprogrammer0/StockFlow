@@ -14,4 +14,7 @@ class Product extends Model
     public function movimentacao(){
         return $this->hasMany(Movimentacao::class);
     }
+    public function fornecedor(){
+        return $this->belongsTo(Fornecedor::class);
+    }
 }
