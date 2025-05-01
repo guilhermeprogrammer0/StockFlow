@@ -5,7 +5,7 @@
         <x-area-component tipoAlinhamento2="items-start">
             <div class="lista_usuarios overflow-x-auto">
             @if(count($movimentacoes) === 0)
-            <h2 class="text-white text-center bg-red-900 rounded p-1">Não foram encontradas movimentações</h2>
+            <h2 class="text-white text-center bg-red-900 p-1">Não foram encontradas movimentações</h2>
             @else
                 <table class="table table-striped">
                     <thead>
@@ -21,7 +21,7 @@
                     @foreach($movimentacoes as $movimentacao)
                         <tr>
                            <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
-                           <td >@if($movimentacao->tipo === 'entrada') {{$movimentacao->produto->fornecedor->nome}} @else ----- @endif </td>
+                           <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome : '---------'}}</td>
                            <td>{{$movimentacao->quantidade}}</td>
                            <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
                            <td>{{\Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y')}}</td>

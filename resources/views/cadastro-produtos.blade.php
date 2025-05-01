@@ -33,13 +33,6 @@
                             <span class="text-danger mt-1">{{$message}}</span>
                             @enderror
                         </div>
-                        <div>
-                            <label for="quantidade">Quantidade</label>
-                            <input type="text" class="form-control" id="quantidade" name="quantidade" value="{{old('quantidade')}}">
-                            @error('quantidade')
-                            <span class="text-danger mt-1">{{$message}}</span>
-                            @enderror
-                        </div>
                     </div>
                     <div class="mb-3">
                     <label for="categoria">Categoria</label>
@@ -56,24 +49,9 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                    <label for="categoria">Fornecedor</label>
-                        <div>
-                            <select class="form-select-cadastro p-3 border bg-white" name="fornecedor">
-                                <option value="0" selected>Selecione</option>
-                                @foreach($fornecedores as $fornecedor)
-                                <option value="{{$fornecedor->id}}">{{$fornecedor->nome}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @error('categoria')
-                        <span class="text-danger mt-1">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
             </div>
-
             </form>
             </div>
         </x-area-component>

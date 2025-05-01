@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Fornecedor extends Model
 {
     protected $table = 'fornecedores';
-    public function produto(){
-        return $this->hasMany(Product::class);
+    public function movimentacao(){
+        return $this->hasMany(Movimentacao::class);
     }
 }

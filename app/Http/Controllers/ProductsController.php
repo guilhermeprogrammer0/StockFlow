@@ -40,8 +40,7 @@ class ProductsController extends Controller
             abort(403, 'Você não tem permissão para acessar esse recurso');
         }
         $categorias = Categoria::all();
-        $fornecedores = Fornecedor::all();
-        return view('cadastro-produtos', ['categorias' => $categorias,'fornecedores'=>$fornecedores]);
+        return view('cadastro-produtos', ['categorias' => $categorias]);
     }
     public function cadastro_produtos_submit(Request $request)
     {
@@ -53,9 +52,7 @@ class ProductsController extends Controller
                 'codigo' => ['required', 'min:3', 'max:50', 'unique:products,codigo'],
                 'nome' => ['required', 'min:5', 'max:50'],
                 'preco' => ['required', 'numeric'],
-                'quantidade' => ['required', 'integer'],
                 'categoria' => ['required', 'exists:categorias,id'],
-                'fornecedor' => ['required', 'exists:fornecedores,id'],
             ],
             [
                 'nome.required' => 'O campo nome é obrigatório',
@@ -66,22 +63,15 @@ class ProductsController extends Controller
                 'codigo.max' => 'No máximo :max caracteres',
                 'preco.required' => 'O campo preço é obrigatório',
                 'preco.numeric' => 'Precisar ser um valor válido',
-                'quantidade.required' => 'O campo quantidade é obrigatório',
-                'quantidade.integer' => 'O campo quantidade precisa ser um número',
                 'categoria.required' => 'O campo categoria é obrigatório',
                 'categoria.exists' => 'Precisa ser um valor válido',
-                'fornecedor.required' => 'O campo fornecedor é obrigatório',
-                'fornecedor.exists' => 'Precisa ser um valor válido'
-
             ]
         );
         $produto = new Product();
         $produto->codigo = $request->codigo;
         $produto->nome = $request->nome;
         $produto->preco = $request->preco;
-        $produto->quantidade = $request->quantidade;
         $produto->categoria_id = $request->categoria;
-        $produto->fornecedor_id = $request->fornecedor;
         $produto->save();
 
         return redirect()->route('escolha_categoria');
@@ -91,8 +81,7 @@ class ProductsController extends Controller
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
         $categorias = Categoria::all();
-        $fornecedores = Fornecedor::all();
-        return view('editar_produto', compact('produto', 'categorias','fornecedores'));
+        return view('editar_produto', compact('produto', 'categorias'));
     }
     public function atualizar_produto(Request $request)
     {
@@ -105,7 +94,6 @@ class ProductsController extends Controller
                 'nome' => ['required', 'min:5', 'max:50'],
                 'preco' => ['required', 'numeric'],
                 'categoria' => ['required', 'exists:categorias,id'],
-                'fornecedor' => ['required', 'exists:fornecedores,id'],
             ],
             [
                 'nome.required' => 'O campo nome é obrigatório',
@@ -118,8 +106,6 @@ class ProductsController extends Controller
                 'preco.numeric' => 'Precisar ser um valor válido',
                 'categoria.required' => 'O campo categoria é obrigatório',
                 'categoria.exists' => 'Precisa ser um valor válido',
-                'fornecedor.required' => 'O campo fornecedor é obrigatório',
-                'fornecedor.exists' => 'Precisa ser um valor válido'
             ]
         );
        
@@ -129,7 +115,6 @@ class ProductsController extends Controller
             'nome' => $request->nome,
             'preco' => $request->preco,
             'categoria_id' => $request->categoria,
-            'fornecedor_id' => $request->fornecedor
         ]);
        session(['categoria' => $request->categoria]);
         return redirect()->route('lista_produtos');
@@ -157,13 +142,25 @@ class ProductsController extends Controller
     {
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
-        return view('mudar_estoque', compact('produto'));
+        $fornecedores = Fornecedor::all();
+        return view('mudar_estoque', compact('produto','fornecedores'));
     }
     public function mudar_estoque_submit(Request $request)
     {
-        $request->validate([
-            'quantidade' => 'required|integer',
-            'tipo' => 'required|in:entrada,saida'
+        $regras= [
+            'quantidade' => ['required','integer'],
+            'tipo' => ['required','in:entrada,saida'],
+            ];
+        if($request->tipo === 'entrada'){
+            $regras['fornecedor']= ['required','exists:fornecedores,id'];
+        }
+        $request->validate($regras,[
+            'quantidade.required'=> 'O campo quantidade é obrigatório' ,
+            'quantidade.integer' => 'O campo quantidade precisa ser um número válido',
+            'tipo.required' => 'O campo tipo é obrigatório',
+            'tipo.in' => 'Somente valores válidos',
+            'fornecedores.required' => 'O campo fornecedores é obrigatório',
+            'fornecedores.exists' => 'Somente valores válidos'
         ]);
         $produto = Product::find($request->product_id);
         if ($request->tipo === 'entrada') {
@@ -174,12 +171,15 @@ class ProductsController extends Controller
             $produto->quantidade -= $request->quantidade;
         }
         $produto->save();
-        Movimentacao::create([
-            'tipo' => $request->tipo,
-            'quantidade' => $request->quantidade,
-            'data'=> Carbon::now(),
-            'product_id' => $request->product_id
-        ]);
+        $movimentacao = new Movimentacao();
+        $movimentacao->tipo = $request->tipo;
+        $movimentacao->quantidade = $request->quantidade;
+        $movimentacao->data = Carbon::now();
+        $movimentacao->product_id = $request->product_id;
+        if($request->tipo === 'entrada'){
+            $movimentacao->fornecedor_id = $request->fornecedor;
+        }
+        $movimentacao->save();
         return redirect()->route('lista_produtos');
     }
     public function movimentacoes()

@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Movimentacao extends Model
 {
-    protected $fillable = ['tipo','quantidade','data','product_id'];
+    protected $fillable = ['tipo','quantidade','data','product_id','fornecedor_id'];
     protected $table = 'movimentacoes';
     public function produto(){
         return $this->belongsTo(Product::class,'product_id');
+    }
+    public function fornecedor(){
+        return $this->belongsTo(Fornecedor::class);
     }
 }
