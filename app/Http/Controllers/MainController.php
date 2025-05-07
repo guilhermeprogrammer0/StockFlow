@@ -99,7 +99,7 @@ class MainController extends Controller
         if (Gate::denies('admin')) {
             abort(403, 'Você não tem permissão para acessar esse recurso');
         }
-        $users = User::all();
+        $users = User::paginate(5);
         return view('auth.lista_usuarios', ['usuarios' => $users]);
     }
     public function editar_usuario($id)
