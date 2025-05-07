@@ -15,7 +15,6 @@
                         </tr>
                     </thead>
                     @foreach($usuarios as $usuario)
-
                     <tbody>
                         <tr>
                             <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->name}} </strong> @else {{$usuario->name}} @endif </td>
@@ -28,9 +27,7 @@
                     @endforeach
                 </table>
                 <div class="mt-2 p-2">{{$usuarios->links()}}</div>
-
             </div>
-
         </x-area-component>
     </main>
     <script src="{{asset('assets/js/modal.js')}}"></script>
