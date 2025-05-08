@@ -10,7 +10,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
+                            <th scope="col">Produto</th>
                             <th scope="col">Fornecedor</th>
                             <th scope="col">Quantidade Movimentada</th>
                             <th scope="col">Tipo de movimentação</th>

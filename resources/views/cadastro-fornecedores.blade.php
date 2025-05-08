@@ -34,10 +34,16 @@
               @enderror
             </div>
           </div>
-    
+
           <div class="mb-3 text-center">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>
+          @if(session('sucesso'))
+          <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+          @endif
+          @if(session('erro'))
+          <div class="alert alert-success text-center">{{session('erro')}}</div>
+          @endif
         </form>
       </div>
     </x-area-component>

@@ -53,8 +53,11 @@ class MainController extends Controller
         $user->token = Str::random(69);
         $url = route('confirmacao_usuario', ['token' => $user->token]);
         Mail::to($user->email)->send(new ConfirmacaoContaUsuario($url, $user->name));
-        $user->save();
-        return redirect()->route('lista_usuarios');
+        if ($user->save()) {
+            return redirect()->back()->with('sucesso', 'Usuário cadastrado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao cadastrar o usuário']);
+        }
     }
     public function confirmacaoUsuario($token)
     {
@@ -213,8 +216,11 @@ class MainController extends Controller
         $fornecedor->nome = $request->nome;
         $fornecedor->cnpj = $request->cnpj;
         $fornecedor->email = $request->email;
-        $fornecedor->save();
-        return redirect()->route('lista_fornecedores');
+        if ($fornecedor->save()) {
+            return redirect()->back()->with('sucesso', 'Fornecedor cadastrado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao cadastrar o fornecedor']);
+        }
     }
     public function lista_fornecedores()
     {

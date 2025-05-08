@@ -72,9 +72,11 @@ class ProductsController extends Controller
         $produto->nome = $request->nome;
         $produto->preco = $request->preco;
         $produto->categoria_id = $request->categoria;
-        $produto->save();
-
-        return redirect()->route('escolha_categoria');
+        if ($produto->save()) {
+            return redirect()->back()->with('sucesso', 'Produto cadastrado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao cadastrar o produto']);
+        }
     }
     public function editar_produto($id)
     {

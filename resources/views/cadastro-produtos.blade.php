@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                    <label for="categoria">Categoria</label>
+                        <label for="categoria">Categoria</label>
                         <div>
                             <select class="form-select-cadastro p-3 border bg-white" name="categoria">
                                 <option value="0" selected>Selecione</option>
@@ -51,8 +51,15 @@
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
+                    @if(session('sucesso'))
+                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+                    @endif
+                    @if(session('erro'))
+                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    @endif
             </div>
             </form>
+
             </div>
         </x-area-component>
     </main>
