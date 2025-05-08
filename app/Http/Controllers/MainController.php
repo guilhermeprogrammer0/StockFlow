@@ -193,7 +193,7 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
-                'cnpj' => ['required', 'min:14', 'max:14'],
+                'cnpj' => ['required', 'min:14', 'max:14','unique:fornecedores,cnpj'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:fornecedores,email'],
             ],
             [
@@ -238,7 +238,7 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
-                'cnpj' => ['required', 'min:14', 'max:14'],
+                'cnpj' => ['required', 'min:14', 'max:14',Rule::unique('fornecedores')->ignore($request->id)],
                 'email' => ['required', 'string', 'email', 'max:255',Rule::unique('fornecedores')->ignore($request->id)],
             ],
             [
