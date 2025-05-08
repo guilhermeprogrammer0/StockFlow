@@ -4,7 +4,15 @@
     <x-menu-component />
     <x-area-component>
       <div class="container bg-white rounded-md">
-        <h1 class="escrito-entrar text-black text-center mt-50">Cadastrar</h1>
+          <div class="mt-2">
+                    @if(session('sucesso'))
+                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+                    @endif
+                    @if(session('erro'))
+                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    @endif
+                </div>
+        <h1 class="escrito-entrar text-black text-center mt-50">Cadastro de fornecedores</h1>
         <form action="{{route('cadastro_fornecedores_submit')}}" method="POST" novalidate>
           @csrf
           <div class="mb-3">
@@ -38,12 +46,6 @@
           <div class="mb-3 text-center">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>
-          @if(session('sucesso'))
-          <div class="alert alert-success text-center">{{session('sucesso')}}</div>
-          @endif
-          @if(session('erro'))
-          <div class="alert alert-success text-center">{{session('erro')}}</div>
-          @endif
         </form>
       </div>
     </x-area-component>

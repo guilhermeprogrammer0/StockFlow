@@ -4,9 +4,15 @@
         <x-menu-component />
         <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
-                <div>
-                    <h2>Cadastrar</h2>
+                <div class="mt-2">
+                    @if(session('sucesso'))
+                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+                    @endif
+                    @if(session('erro'))
+                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    @endif
                 </div>
+               <h1 class="escrito-entrar">Cadastro de produtos</h1>
                 <form action="{{route('cadastro_produtos_submit')}}" method="post" novalidate>
                     @csrf
                     <div class="mb-3">
@@ -51,12 +57,6 @@
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
-                    @if(session('sucesso'))
-                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
-                    @endif
-                    @if(session('erro'))
-                    <div class="alert alert-success text-center">{{session('erro')}}</div>
-                    @endif
             </div>
             </form>
 

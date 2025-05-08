@@ -4,7 +4,7 @@
         <x-menu-component />
         <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
-            <div><h2>Editar</h2></div>
+            <div><h2>Edição de produtos</h2></div>
             <form action="{{route('atualizar_produto')}}" method="post" novalidate>
                 @csrf
                 <input type="hidden" name="id" value="{{$produto->id}}">

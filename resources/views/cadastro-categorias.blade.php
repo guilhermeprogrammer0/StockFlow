@@ -4,9 +4,7 @@
         <x-menu-component/>
         <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
-                <div>
-                    <h2>Cadastrar</h2>
-                </div>
+               <h1 class="escrito-entrar">Cadastro de categorias</h1>
                 <form action="{{route('cadastro_categorias_submit')}}" method="POST" novalidate>
                     @csrf
                     <div class="mb-3">

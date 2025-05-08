@@ -4,7 +4,7 @@
     <x-menu-component />
     <x-area-component>
       <div class="container bg-white rounded-md">
-        <h1 class="escrito-entrar text-black text-center mt-50">Editar</h1>
+        <h1 class="escrito-entrar text-black text-center mt-50">Edição de fornecedores</h1>
         <form action="{{route('editar_fornecedor_submit')}}" method="POST" novalidate>
           @csrf
           <input type="hidden" name="id" value="{{$fornecedor->id}}">
