@@ -21,7 +21,7 @@
                     @foreach($movimentacoes as $movimentacao)
                         <tr>
                            <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
-                           <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome : '---------'}}</td>
+                           <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome ?? 'Fornecedor excluído' : '---------'}}</td>
                            <td>{{$movimentacao->quantidade}}</td>
                            <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
                            <td>{{\Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y')}}</td>
