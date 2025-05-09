@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `cache` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.cache: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.cache: ~32 rows (aproximadamente)
 INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
 	('stockflow_cache_076f5b9ba0313f163bb89130e278aca6', 'i:1;', 1745862928),
 	('stockflow_cache_076f5b9ba0313f163bb89130e278aca6:timer', 'i:1745862928;', 1745862928),
@@ -101,19 +101,17 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- Copiando estrutura para tabela stockflow.fornecedores
 CREATE TABLE IF NOT EXISTS `fornecedores` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cnpj` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cnpj` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `fornecedores_cnpj_unique` (`cnpj`),
   UNIQUE KEY `fornecedores_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.fornecedores: ~0 rows (aproximadamente)
-INSERT IGNORE INTO `fornecedores` (`id`, `nome`, `cnpj`, `email`, `created_at`, `updated_at`) VALUES
-	(1, 'Dell', '32345678965236', 'dell@contato.com', '2025-05-01 07:12:42', '2025-05-01 07:13:03');
 
 -- Copiando estrutura para tabela stockflow.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -155,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.migrations: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.migrations: ~8 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(9, '0001_01_01_000000_create_users_table', 1),
 	(10, '0001_01_01_000001_create_cache_table', 1),
@@ -179,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `movimentacoes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.movimentacoes: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.movimentacoes: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.password_reset_tokens
 CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
@@ -204,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.products: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.products: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela stockflow.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (

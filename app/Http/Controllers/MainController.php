@@ -152,11 +152,10 @@ class MainController extends Controller
         if (Auth::user()->role === 'administrador') {
             $user->role = $request->role;
         }
-        $user->save();
-        if (Auth::user()->role === 'administrador') {
-            return redirect()->route('lista_usuarios');
-        } else if (Auth::user()->role === 'comum') {
-            return redirect()->route('perfil_comum');
+        if ($user->save()) {
+            return redirect()->back()->with('sucesso', 'Usuário editado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao editar o usuário']);
         }
     }
     public function excluir_usuario($id)
@@ -196,7 +195,7 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
-                'cnpj' => ['required', 'min:14', 'max:14','unique:fornecedores,cnpj'],
+                'cnpj' => ['required', 'min:14', 'max:14', 'unique:fornecedores,cnpj'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:fornecedores,email'],
             ],
             [
@@ -244,8 +243,8 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
-                'cnpj' => ['required', 'min:14', 'max:14',Rule::unique('fornecedores')->ignore($request->id)],
-                'email' => ['required', 'string', 'email', 'max:255',Rule::unique('fornecedores')->ignore($request->id)],
+                'cnpj' => ['required', 'min:14', 'max:14', Rule::unique('fornecedores')->ignore($request->id)],
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('fornecedores')->ignore($request->id)],
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
@@ -259,20 +258,25 @@ class MainController extends Controller
                 'email.unique' => 'o email informado está indisponível',
             ]
         );
-       
+
         $fornecedor = Fornecedor::find($request->id);
         $fornecedor->nome = $request->nome;
         $fornecedor->cnpj = $request->cnpj;
         $fornecedor->email = $request->email;
-        $fornecedor->save();
-        return redirect()->route('lista_fornecedores');
+        if ($fornecedor->save()) {
+            return redirect()->back()->with('sucesso', 'Fornecedor editado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao editar o fornecedor']);
+        }
     }
-    public function excluir_fornecedor($id){
+    public function excluir_fornecedor($id)
+    {
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
         return view('exclusao-confirma-fornecedor', compact('fornecedor'));
     }
-    public function excluir_fornecedor_confirma($id){
+    public function excluir_fornecedor_confirma($id)
+    {
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
         $fornecedor->delete();

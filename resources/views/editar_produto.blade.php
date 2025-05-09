@@ -2,8 +2,16 @@
     <x-logo-component />
     <main class="main-container !h-190">
         <x-menu-component />
-        <x-area-component>
+        <x-area-component tipoAlinhamento2="items-start">
             <div class="formulario p-2 mt-3 bg-white rounded">
+                 <div class="mt-2">
+                    @if(session('sucesso'))
+                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+                    @endif
+                    @if(session('erro'))
+                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    @endif
+                </div>
             <div><h2>Edição de produtos</h2></div>
             <form action="{{route('atualizar_produto')}}" method="post" novalidate>
                 @csrf

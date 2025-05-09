@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F2F2F2;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #032859;
+    border-radius: 3px;
+}
+
 .fundo-login {
     background: linear-gradient(to right, #011C40, #032859, #000000);
 }
@@ -25,12 +39,25 @@
 
 .main-container {
     display: flex;
-    height: 40em;
+    height: 45em;
 }
 
 .area {
     width: 83%;
+}
 
+.area::-webkit-scrollbar {
+    width: 5px;
+}
+
+.area::-webkit-scrollbar-track {
+    background:#032859;
+    border-radius: 3px;
+}
+
+.area::-webkit-scrollbar-thumb {
+    background:#032859;
+    border-radius: 3px;
 }
 
 .btnMenu {
@@ -146,6 +173,7 @@
         align-items: flex-start;
         font-size: 1.1em;
     }
+
     .btnMenu {
         display: flex;
     }
@@ -187,4 +215,3 @@
     }
 
 }
-

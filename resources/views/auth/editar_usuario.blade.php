@@ -3,7 +3,15 @@
   <main class="main-container !h-190">
     <x-menu-component />
     <x-area-component>
-      <div class="container bg-white rounded-md">
+      <div class="container bg-white rounded-md mt-2">
+        <div class="mt-2">
+          @if(session('sucesso'))
+          <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+          @endif
+          @if(session('erro'))
+          <div class="alert alert-success text-center">{{session('erro')}}</div>
+          @endif
+        </div>
         <h1 class="escrito-entrar text-black text-center mt-50">Edição de usuário</h1>
         <form action="{{ route('editar_usuario_submit')}}" method="POST" novalidate>
           @csrf

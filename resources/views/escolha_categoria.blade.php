@@ -2,8 +2,8 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component>
-            <section class="escolha-categoria bg-white p-3 rounded">
+        <x-area-component tipoAlinhamento2="items-start">
+            <section class="escolha-categoria bg-white p-3 rounded mt-3">
                 <div class="mb-3">
                     <h2>Qual categoria de produtos você gostaria de ver?</h2>
                 </div>
@@ -15,11 +15,11 @@
                             @foreach($categorias as $categoria)
                             <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
                             @endforeach
-                            @error('categoria')
-                            <span class="text-danger mt-1">{{$message}}</span>
-                            @enderror
                         </select>
                     </div>
+                      @error('categoria')
+                        <span class="text-danger mt-1">{{$message}}</span>
+                        @enderror
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>

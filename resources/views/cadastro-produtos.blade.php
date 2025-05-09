@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container !h-190">
         <x-menu-component />
-        <x-area-component>
+        <x-area-component tipoAlinhamento2="items-start">
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div class="mt-2">
                     @if(session('sucesso'))

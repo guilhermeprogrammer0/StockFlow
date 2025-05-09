@@ -2,7 +2,7 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component/>
-        <x-area-component>
+        <x-area-component tipoAlinhamento2="items-start">
             <div class="formulario p-2 mt-3 bg-white rounded">
                <h1 class="escrito-entrar">Cadastro de categorias</h1>
                 <form action="{{route('cadastro_categorias_submit')}}" method="POST" novalidate>
@@ -10,7 +10,7 @@
                     <div class="mb-3">
                         <div>
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Desktop" name="nome">
+                            <input type="text" class="form-control" id="nome" name="nome">
                             @error('nome')
                             <span class="text-danger mt-1">{{$message}}</span>
                             @enderror

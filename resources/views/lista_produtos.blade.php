@@ -2,12 +2,12 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component> 
+        <x-area-component tipoAlinhamento2="items-start">   
             @if(count($produtos) === 0)
             <h2 class="text-white bg-red-900 p-1 text-center">Não foram encontrados produtos</h2>
             @endif
         @foreach($produtos as $produto)
-            <div class="card w-auto">
+            <div class="card w-auto mt-2">
                 <div class="card-header relative">
                     <h4>{{$produto->nome}}</h4>
                     @can('admin')

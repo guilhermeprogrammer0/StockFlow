@@ -2,8 +2,8 @@
   <x-logo-component />
   <main class="main-container !h-180">
     <x-menu-component />
-    <x-area-component>
-      <div class="container bg-white rounded-md">
+    <x-area-component tipoAlinhamento2="items-start">
+      <div class="container bg-white rounded-md mt-2">
         <div class="mt-2">
         @if(session('sucesso'))
           <div class="alert alert-success text-center">{{session('sucesso')}}</div>
@@ -18,7 +18,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Nome</label>
-              <input type="text" class="form-control" id="name" placeholder="João" name="name" value="{{old('name')}}">
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
               @error('name')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
@@ -40,7 +40,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="usuario">Usuário</label>
-              <input type="email" class="form-control" id="email" placeholder="usuario@mail.com" name="email" value="{{old('email')}}">
+              <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
               @error('email')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror

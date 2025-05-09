@@ -24,11 +24,11 @@ class ProductsController extends Controller
     {
         $request->validate(
             [
-                'categoria' => 'required|not_in:selecione'
+                'categoria' => 'required|exists:categorias,id'
             ],
             [
                 'categoria.required' => 'O campo categoria é obrigatório',
-                'categoria.not_in' => 'Somente valores válidos'
+                'categoria.exists' => 'Somente valores válidos'
             ]
         );
         session(['categoria' => $request->categoria]);
@@ -50,7 +50,7 @@ class ProductsController extends Controller
         $request->validate(
             [
                 'codigo' => ['required', 'min:3', 'max:50', 'unique:products,codigo'],
-                'nome' => ['required', 'min:5', 'max:50'],
+                'nome' => ['required', 'min:3', 'max:50'],
                 'preco' => ['required', 'numeric'],
                 'categoria' => ['required', 'exists:categorias,id'],
             ],
@@ -64,7 +64,7 @@ class ProductsController extends Controller
                 'preco.required' => 'O campo preço é obrigatório',
                 'preco.numeric' => 'Precisar ser um valor válido',
                 'categoria.required' => 'O campo categoria é obrigatório',
-                'categoria.exists' => 'Precisa ser um valor válido',
+                'categoria.exists' => 'Somente valores válidos',
             ]
         );
         $produto = new Product();
@@ -93,7 +93,7 @@ class ProductsController extends Controller
         $request->validate(
             [
                 'codigo' => ['required', 'min:3', 'max:50', Rule::unique('products', 'codigo')->ignore($request->id)],
-                'nome' => ['required', 'min:5', 'max:50'],
+                'nome' => ['required', 'min:3', 'max:50'],
                 'preco' => ['required', 'numeric'],
                 'categoria' => ['required', 'exists:categorias,id'],
             ],
@@ -110,16 +110,19 @@ class ProductsController extends Controller
                 'categoria.exists' => 'Precisa ser um valor válido',
             ]
         );
-       
         $produto = Product::find($request->id);
-        $produto->update([
+        $atualizado = $produto->update([
             'codigo' => $request->codigo,
             'nome' => $request->nome,
             'preco' => $request->preco,
             'categoria_id' => $request->categoria,
         ]);
-       session(['categoria' => $request->categoria]);
-        return redirect()->route('lista_produtos');
+        if ($atualizado) {
+            return redirect()->back()->with('sucesso', 'Produto editado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao editar o produto']);
+        }
+        session(['categoria' => $request->categoria]);
     }
     public function excluir_produto($id)
     {
@@ -145,24 +148,24 @@ class ProductsController extends Controller
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
         $fornecedores = Fornecedor::all();
-        return view('mudar_estoque', compact('produto','fornecedores'));
+        return view('mudar_estoque', compact('produto', 'fornecedores'));
     }
     public function mudar_estoque_submit(Request $request)
     {
-        $regras= [
-            'quantidade' => ['required','integer'],
-            'tipo' => ['required','in:entrada,saida'],
-            ];
-        if($request->tipo === 'entrada'){
-            $regras['fornecedor']= ['required','exists:fornecedores,id'];
+        $regras = [
+            'quantidade' => ['required', 'integer'],
+            'tipo' => ['required', 'in:entrada,saida'],
+        ];
+        if ($request->tipo === 'entrada') {
+            $regras['fornecedor'] = ['required', 'exists:fornecedores,id'];
         }
-        $request->validate($regras,[
-            'quantidade.required'=> 'O campo quantidade é obrigatório' ,
+        $request->validate($regras, [
+            'quantidade.required' => 'O campo quantidade é obrigatório',
             'quantidade.integer' => 'O campo quantidade precisa ser um número válido',
             'tipo.required' => 'O campo tipo é obrigatório',
             'tipo.in' => 'Somente valores válidos',
-            'fornecedores.required' => 'O campo fornecedores é obrigatório',
-            'fornecedores.exists' => 'Somente valores válidos'
+            'fornecedor.required' => 'O campo fornecedores é obrigatório',
+            'fornecedor.exists' => 'Somente valores válidos'
         ]);
         $produto = Product::find($request->product_id);
         if ($request->tipo === 'entrada') {
@@ -178,11 +181,14 @@ class ProductsController extends Controller
         $movimentacao->quantidade = $request->quantidade;
         $movimentacao->data = Carbon::now();
         $movimentacao->product_id = $request->product_id;
-        if($request->tipo === 'entrada'){
+        if ($request->tipo === 'entrada') {
             $movimentacao->fornecedor_id = $request->fornecedor;
         }
-        $movimentacao->save();
-        return redirect()->route('lista_produtos');
+        if ($movimentacao->save()) {
+            return redirect()->back()->with('sucesso', 'Movimentação realizada com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao cadastrar ao fazer a operação']);
+        }
     }
     public function movimentacoes()
     {

@@ -2,8 +2,8 @@
   <x-logo-component />
   <main class="main-container !h-180">
     <x-menu-component />
-    <x-area-component>
-      <div class="container bg-white rounded-md">
+    <x-area-component tipoAlinhamento2="items-start">
+      <div class="container bg-white rounded-md mt-2">
           <div class="mt-2">
                     @if(session('sucesso'))
                     <div class="alert alert-success text-center">{{session('sucesso')}}</div>
@@ -19,7 +19,7 @@
             <div class="form-group">
               <label for="usuario">Nome</label>
               <input type="text" class="form-control" id="name" name="nome" value="{{old('nome')}}">
-              @error('name')
+              @error('nome')
               <span class="text-danger mt-1">{{$message}}</span>
               @enderror
             </div>
