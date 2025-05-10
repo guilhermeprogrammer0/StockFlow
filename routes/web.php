@@ -22,6 +22,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/excluir_fornecedor/{id}',[MainController::class,'excluir_fornecedor'])->name('excluir_fornecedor');
     Route::get('/excluir_fornecedor_confirma/{id}',[MainController::class,'excluir_fornecedor_confirma'])->name('excluir_fornecedor_confirma');
     Route::post('/editar_fornecedor_submit',[MainController::class,'editar_fornecedor_submit'])->name('editar_fornecedor_submit');
+    Route::get('/cadastro_clientes',[MainController::class,'cadastro_clientes'])->name('cadastro_clientes');
+    Route::post('/cadastro_clientes_submit',[MainController::class,'cadastro_clientes_submit'])->name('cadastro_clientes_submit');
+    Route::get('/lista_clientes',[MainController::class,'lista_clientes'])->name('lista_clientes');
+    Route::get('/editar_cliente/{id}',[MainController::class,'editar_cliente'])->name('editar_cliente');
+    Route::post('/editar_cliente_submit',[MainController::class,'editar_cliente_submit'])->name('editar_cliente_submit');
+    Route::get('/excluir_cliente/{id}',[MainController::class,'excluir_cliente'])->name('excluir_cliente');
+    Route::get('/excluir_cliente_confirma/{id}',[MainController::class,'excluir_cliente_confirma'])->name('excluir_cliente_confirma');
     Route::get('/cadastro_produtos',[ProductsController::class,'cadastro_produtos'])->name('cadastro_produtos');
     Route::post('/cadastro_produtos_submit',[ProductsController::class,'cadastro_produtos_submit'])->name('cadastro_produtos_submit');
     Route::get('/editar_produto/{id}',[ProductsController::class,'editar_produto'])->name('editar_produto');

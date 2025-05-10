@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ConfirmacaoContaUsuario;
 use App\Models\Fornecedor;
 use App\Models\User;
+use App\Models\Cliente;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -279,7 +280,101 @@ class MainController extends Controller
     {
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
+        if($fornecedor->movimentacao()->exists()){
+            return redirect()->back()->with('erro','Esse fornecedor está associado a uma movimentação');
+        }
         $fornecedor->delete();
         return redirect()->route('lista_fornecedores');
+    }
+    public function cadastro_clientes()
+    {
+        return view('cadastro-clientes');
+    }
+    public function cadastro_clientes_submit(Request $request)
+    {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'max:100'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes,email'],
+            ],
+            [
+                'nome.required' => 'O nome é obrigatório',
+                'nome.string' => 'O campo nome tem que ser um texto',
+                'nome.max' => 'O campo nome não pode ter mais que :max caracteres',
+                'email.required' => 'O email é obrigatório',
+                'email.email' => 'O email deve ser válido',
+                'email.unique' => 'o email informado está indisponível',
+            ]
+        );
+        $cliente = new Cliente();
+        $cliente->nome = $request->nome;
+        $cliente->email = $request->email;
+        if ($cliente->save()) {
+            return redirect()->back()->with('sucesso', 'Cliente cadastrado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao cadastrar o cliente']);
+        }
+    }
+    public function lista_clientes()
+    {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
+        $clientes =  Cliente::all();
+        return view('lista-clientes', compact('clientes'));
+    }
+    public function editar_cliente($id)
+    {
+        $id = Crypt::decrypt($id);
+        $cliente = Cliente::find($id);
+        return view('editar-cliente', compact('cliente'));
+    }
+    public function editar_cliente_submit(Request $request)
+    {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'max:100'],
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('clientes')->ignore($request->id)],
+            ],
+            [
+                'nome.required' => 'O nome é obrigatório',
+                'nome.string' => 'O campo nome tem que ser um texto',
+                'nome.max' => 'O campo nome não pode ter mais que :max caracteres',
+                'email.required' => 'O email é obrigatório',
+                'email.email' => 'O email deve ser válido',
+                'email.unique' => 'o email informado está indisponível',
+            ]
+        );
+
+        $cliente = Cliente::find($request->id);
+        $cliente->nome = $request->nome;
+        $cliente->email = $request->email;
+        if ($cliente->save()) {
+            return redirect()->back()->with('sucesso', 'Cliente editado com sucesso!');
+        } else {
+            return redirect()->back()->with(['erro' => 'Erro ao editar o cliente']);
+        }
+    }
+    public function excluir_cliente($id)
+    {
+        $id = Crypt::decrypt($id);
+        $cliente = cliente::find($id);
+        return view('exclusao-confirma-cliente', compact('cliente'));
+    }
+    public function excluir_cliente_confirma($id)
+    {
+        $id = Crypt::decrypt($id);
+        $cliente = cliente::find($id);
+        if($cliente->movimentacao()->exists()){
+            return redirect()->back()->with('erro','Esse cliente está associado a uma movimentação');
+        }
+        $cliente->delete();
+        return redirect()->route('lista_clientes');
     }
 }

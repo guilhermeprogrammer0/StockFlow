@@ -1,15 +1,21 @@
+let div_fornecedor = document.querySelector("#div-fornecedor");
+let div_cliente = document.querySelector("#div-cliente");
+let cliente = document.querySelector("#cliente");
 let tipo_movimentacao = document.querySelector("#tipo");
-let fornecedor = document.querySelector("#fornecedor");
-fornecedor.disabled = true;
-fornecedor.classList.add('text-red-300');
+
 tipo_movimentacao.addEventListener('change',()=>{
     if(tipo_movimentacao.value === 'entrada'){
-        fornecedor.disabled = false;
-        fornecedor.classList.remove('text-red-300');
+        div_fornecedor.classList.remove('hidden');
+        div_cliente.classList.add('hidden');
+
+    }
+    else if(tipo_movimentacao.value === 'saida'){
+        div_fornecedor.classList.add('hidden');
+        div_cliente.classList.remove('hidden');
     }
     else{
-        fornecedor.disabled = true;
-        fornecedor.classList.add('text-red-300');
+        div_fornecedor.classList.add('hidden');
+        div_cliente.classList.add('hidden');
     }
 });
 

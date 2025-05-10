@@ -9,7 +9,7 @@
           <div class="alert alert-success text-center">{{session('sucesso')}}</div>
           @endif
           @if(session('erro'))
-          <div class="alert alert-success text-center">{{session('erro')}}</div>
+          <div class="alert alert-danger text-center">{{session('erro')}}</div>
           @endif
           </div>
         <h1 class="escrito-entrar text-black text-center mt-50">Cadastro de usuários</h1>

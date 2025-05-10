@@ -9,10 +9,10 @@
                     {{session('erro')}}
                     </div>
                     @endif
-                    <h2>Deseja mesmo excluir o fornecedor<strong> {{$fornecedor->nome ?? 'Fornecedor excluído'}}</strong>?</h2>
+                    <h2>Deseja mesmo excluir o cliente<strong> {{$cliente->nome ?? 'Cliente excluído'}}</strong>?</h2>
                     <div>
-                    <a href="{{route('lista_fornecedores')}}" class="btn btn-secondary"> Cancelar</a>
-                    <a href="{{route('excluir_fornecedor_confirma',['id'=>Crypt::encrypt($fornecedor->id)])}}" class="btn btn-danger">Excluir</a>
+                    <a href="{{route('lista_clientes')}}" class="btn btn-secondary"> Cancelar</a>
+                    <a href="{{route('excluir_cliente_confirma',['id'=>Crypt::encrypt($cliente->id)])}}" class="btn btn-danger">Excluir</a>
                     </div>
                 </div>
         </x-area-component>

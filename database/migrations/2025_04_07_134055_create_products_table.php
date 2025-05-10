@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo',100)->unique();
             $table->string('nome',100);
-            $table->text('descricao');
             $table->decimal('preco');
-            $table->integer('quantidade');
-            $table->bigInteger('categoria_id')->unsigned();
+            $table->integer('quantidade')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable(); 
             $table->timestamps();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('restrict');
         });
     }
 

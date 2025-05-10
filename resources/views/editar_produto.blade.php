@@ -9,7 +9,7 @@
                     <div class="alert alert-success text-center">{{session('sucesso')}}</div>
                     @endif
                     @if(session('erro'))
-                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    <div class="alert alert-danger text-center">{{session('erro')}}</div>
                     @endif
                 </div>
             <div><h2>Edição de produtos</h2></div>

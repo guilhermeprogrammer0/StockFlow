@@ -15,4 +15,7 @@ class Movimentacao extends Model
     public function fornecedor(){
         return $this->belongsTo(Fornecedor::class);
     }
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
 }

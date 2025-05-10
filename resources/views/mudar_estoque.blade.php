@@ -2,14 +2,14 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        <x-area-component tipoAlinhamento2="items-start">
+        <x-area-component>
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div class="mt-2">
                     @if(session('sucesso'))
                     <div class="alert alert-success text-center">{{session('sucesso')}}</div>
                     @endif
-                    @if(session('erro'))
-                    <div class="alert alert-success text-center">{{session('erro')}}</div>
+                    @if(session('erro2'))
+                    <div class="alert alert-danger text-center">{{session('erro2')}}</div>
                     @endif
                 </div>
                 <div>
@@ -43,7 +43,7 @@
                         <span class="text-danger mt-1">{{$message}}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 hidden" id="div-fornecedor">
                         <label for="categoria">Fornecedor</label>
                             <div>
                                 <select class="form-select-cadastro p-3 border bg-white" name="fornecedor" id="fornecedor">
@@ -56,9 +56,24 @@
                             @error('fornecedor')
                             <span class="text-danger mt-1">{{$message}}</span>
                             @enderror
-                    @if(session('erro'))
+                    </div>
+                      <div class="mb-3 hidden" id="div-cliente">
+                        <label for="categoria">Cliente</label>
+                            <div>
+                                <select class="form-select-cadastro p-3 border bg-white " name="cliente" id="cliente">
+                                    <option value="0" selected>Selecione</option>
+                                    @foreach($clientes as $cliente)
+                                    <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('cliente')
+                            <span class="text-danger mt-1">{{$message}}</span>
+                            @enderror
+                    </div>
+                      @if(session('erro'))
                     <div class="text-danger">{{session('erro')}}</div>
-                    @enderror
+                    @endif
                     <div class="mb-3 mt-2">
                         <button type="submit" class="btn btn-primary">Mudar</button>
                     </div>

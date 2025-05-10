@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\Fornecedor;
 use App\Models\Movimentacao;
 use App\Models\Product;
@@ -140,6 +141,9 @@ class ProductsController extends Controller
         }
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
+        if($produto->movimentacao()->exists()){
+            return redirect()->back()->with('erro','Esse produto está associado a uma movimentação');
+        }
         $produto->delete();
         return redirect()->route('lista_produtos');
     }
@@ -148,7 +152,8 @@ class ProductsController extends Controller
         $id = Crypt::decrypt($id);
         $produto = Product::find($id);
         $fornecedores = Fornecedor::all();
-        return view('mudar_estoque', compact('produto', 'fornecedores'));
+        $clientes = Cliente::all();
+        return view('mudar_estoque', compact('produto', 'fornecedores','clientes'));
     }
     public function mudar_estoque_submit(Request $request)
     {
@@ -159,13 +164,18 @@ class ProductsController extends Controller
         if ($request->tipo === 'entrada') {
             $regras['fornecedor'] = ['required', 'exists:fornecedores,id'];
         }
+        if($request->tipo === 'saida'){
+            $regras['cliente'] = ['required', 'exists:clientes,id'];
+        }
         $request->validate($regras, [
             'quantidade.required' => 'O campo quantidade é obrigatório',
             'quantidade.integer' => 'O campo quantidade precisa ser um número válido',
             'tipo.required' => 'O campo tipo é obrigatório',
             'tipo.in' => 'Somente valores válidos',
-            'fornecedor.required' => 'O campo fornecedores é obrigatório',
-            'fornecedor.exists' => 'Somente valores válidos'
+            'fornecedor.required' => 'O campo fornecedor é obrigatório',
+            'fornecedor.exists' => 'Somente valores válidos',
+            'cliente.required' => 'O campo cliente é obrigatório',
+            'cliente.exists' => 'Somente valores válidos'
         ]);
         $produto = Product::find($request->product_id);
         if ($request->tipo === 'entrada') {
@@ -184,25 +194,23 @@ class ProductsController extends Controller
         if ($request->tipo === 'entrada') {
             $movimentacao->fornecedor_id = $request->fornecedor;
         }
+        if ($request->tipo === 'saida') {
+            $movimentacao->cliente_id = $request->cliente;
+        }
         if ($movimentacao->save()) {
             return redirect()->back()->with('sucesso', 'Movimentação realizada com sucesso!');
         } else {
-            return redirect()->back()->with(['erro' => 'Erro ao cadastrar ao fazer a operação']);
+            return redirect()->back()->with(['erro2' => 'Erro ao cadastrar ao fazer a operação']);
         }
     }
     public function movimentacoes()
     {
-        $movimentacoes = Movimentacao::with('produto')->get();
-        return view('movimentacoes', compact('movimentacoes'));
+        return view('movimentacoes');
     }
     public function lista_produtos()
     {
-        if (!session()->has('categoria')) {
-            return redirect()->route('escolha_categoria');
-        }
-        $categoria = session('categoria');
-        $produtos = Product::where('categoria_id', $categoria)->get();
-        return view('lista_produtos', ['produtos' => $produtos]);
+       
+        return view('lista_produtos');
     }
     public function cadastro_categorias()
     {
@@ -249,6 +257,9 @@ class ProductsController extends Controller
         }
         $id = Crypt::decrypt($id);
         $categoria = Categoria::find($id);
+        if($categoria->produto()->exists()){
+            return redirect()->back()->with('erro','Essa categoria está associado a um produto.');
+        }
         $categoria->delete();
         return redirect()->route('cadastro_categorias');
     }
