@@ -2,9 +2,6 @@
     <x-logo-component />
     <main class="main-container">
         <x-menu-component />
-        
-        
-        @livewire('busca-produtos')
-
-</main>
+            <livewire:busca-produtos />
+    </main>
 </x-main-layout>

@@ -1,14 +1,12 @@
 <x-area-component>
-
 <div class="w-full d-flex justify-center items-center mb-3 flex-column">
 <label for="busca" class="color-text text-2xl"> Buscar </label>
-<input type="text" class="form-control w-50" wire:model.live="busca" placeholder="Código ou nome">
+<input type="text" class="form-control w-25" wire:model.live="busca" placeholder="Código ou nome">
 </div>
-
     @if(count($produtos) === 0)
         <h2 class="text-white bg-red-900 p-1 text-center mt-2">Não foram encontrados produtos</h2>
     @else
-    <div class="d-flex gap-2 w-full h-full justify-center items-start flex-wrap">
+    <div class="d-flex gap-2 w-full h-auto justify-center items-start flex-wrap">
         @foreach($produtos as $produto)
             <div class="card w-auto mt-2 p-2">
                 <div class="card-header relative">
@@ -38,5 +36,4 @@
         @endforeach
         </div>
     @endif
-
 </x-area-component>

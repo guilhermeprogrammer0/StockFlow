@@ -11,9 +11,10 @@
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/bootstrap.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
-   
+    @livewireStyles
 </head>
 <body class="{{$color ?? white}}">
     {{$slot}}
+    @livewireScripts
 </body>
 </html>
