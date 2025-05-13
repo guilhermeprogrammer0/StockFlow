@@ -4,7 +4,7 @@
          @else
         <label for="tipo">Tipo de Movimentação</label>
         <select class="form-select p-3 border bg-white" wire:model.live="tipo">
-        <option value="" selected>Selecione</option>
+        <option value="" selected>Todas</option>
         <option value="entrada"> Entrada </option>
         <option value="saida"> Saída </option>
         </select>                        
