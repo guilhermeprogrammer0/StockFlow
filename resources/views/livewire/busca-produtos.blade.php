@@ -1,14 +1,15 @@
 <x-area-component>
 <div class="w-full d-flex justify-center items-center mb-3 flex-column">
 <label for="busca" class="color-text text-2xl"> Buscar </label>
-<input type="text" class="form-control w-25" wire:model.live="busca" placeholder="Código ou nome">
+<input type="text" class="w-4/5 md:w-1/4 p-3 bg-white rounded outline-none" wire:model.live="busca" placeholder="Código ou nome">
+<p class="text-center color text-base p-1 mt-2 text-white rounded-sm">Total de produtos encontrados: <strong>{{$quantidadeProdutos}}</strong></p>
 </div>
     @if(count($produtos) === 0)
         <h2 class="text-white bg-red-900 p-1 text-center mt-2">Não foram encontrados produtos</h2>
     @else
-    <div class="d-flex gap-2 w-full h-auto justify-center items-start flex-wrap">
+    <div class="d-flex gap-1 w-full h-auto justify-evenly items-center flex-wrap">
         @foreach($produtos as $produto)
-            <div class="card w-auto mt-2 p-2">
+            <div class="card w-auto mt-1v p-1">
                 <div class="card-header relative">
                     <h4>{{ $produto->nome }}</h4>
                     @can('admin')

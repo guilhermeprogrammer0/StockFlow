@@ -11,10 +11,10 @@ class FormTipoMovimentacao extends Component
     public function render()
     {
         if($this->tipo !== ''){
-        $movimentacoes = Movimentacao::with('produto','cliente')->where('tipo', $this->tipo)->get();
+        $movimentacoes = Movimentacao::with('produto','cliente')->where('tipo', $this->tipo)->orderBy('data','desc')->get();
         }
         else{
-            $movimentacoes = Movimentacao::with('produto','cliente')->get();
+            $movimentacoes = Movimentacao::with('produto','cliente')->orderBy('data','desc')->get();
         }
         return view('livewire.form-tipo-movimentacao',compact('movimentacoes'));
     }
