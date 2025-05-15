@@ -13,7 +13,7 @@
                     @endif
                 </div>
                 <div>
-                    <h2 class="text-center color text-white text-2xl">Mudar estoque</h2>
+                    <h2 class="text-center color text-white text-2xl mt-3">Mudar estoque</h2>
                 </div>
                 <h5 class="text-center text-xl">{{$produto->nome}}</h5>
                 <p class="text-center">Quantidade atual: <strong>{{$produto->quantidade ?? 0}}</strong></p>
@@ -76,6 +76,7 @@
                     @endif
                     <div class="mb-3 mt-2">
                         <button type="submit" class="btn-main">Mudar</button>
+                        <a href="{{route('lista_produtos')}}" class="text-blue-500 ml-5"> Lista de produtos </a>
                     </div>
 
                 </form>
