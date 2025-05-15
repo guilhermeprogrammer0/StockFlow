@@ -6,47 +6,47 @@
             <div class="formulario p-2 mt-3 bg-white rounded">
                 <div class="mt-2">
                     @if(session('sucesso'))
-                    <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+                    <div class="text-green-400 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
                     @endif
                     @if(session('erro2'))
-                    <div class="alert alert-danger text-center">{{session('erro2')}}</div>
+                    <div class="text-red-400 text-2xl bg-red-100 text-center">{{session('erro2')}}</div>
                     @endif
                 </div>
                 <div>
-                    <h2 class="text-center color text-white">Mudar estoque</h2>
+                    <h2 class="text-center color text-white text-2xl">Mudar estoque</h2>
                 </div>
-                <h5 class="text-center">{{$produto->nome}}</h5>
+                <h5 class="text-center text-xl">{{$produto->nome}}</h5>
                 <p class="text-center">Quantidade atual: <strong>{{$produto->quantidade ?? 0}}</strong></p>
 
                 <form action="{{route('mudar_estoque_submit')}}" method="post" novalidate>
                     @csrf
                     <input type="hidden" name="product_id" value="{{$produto->id}}">
                     <div class="mb-3">
+                          <label for="quantidade">Quantidade</label>
                         <div>
-                            <label for="quantidade">Quantidade</label>
-                            <input type="text" class="form-control" id="descricao" name="quantidade" value="{{old('quantidade')}}">
-                            @error('quantidade')
-                            <span class="text-danger mt-1">{{$message}}</span>
-                            @enderror
+                            <input type="text" class="input-form" id="descricao" name="quantidade" value="{{old('quantidade')}}">
                         </div>
+                          @error('quantidade')
+                            <span class="text-red-500 mt-1">{{$message}}</span>
+                            @enderror
                     </div>
                     <div class="mb-3">
                         <label for="quantidade">Tipo de operação</label>
                         <div>
-                            <select class="form-select-cadastro p-3 border bg-white" name="tipo" id="tipo">
+                            <select class="form-select-cadastro p-3 bg-white" name="tipo" id="tipo">
                                 <option value="0" selected>Selecione</option>
                                 <option value="entrada">Entrada</option>
                                 <option value="saida">Saída</option>
                             </select>
                         </div>
                         @error('tipo')
-                        <span class="text-danger mt-1">{{$message}}</span>
+                        <span class="text-red-500 mt-1">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="mb-3 hidden" id="div-fornecedor">
                         <label for="categoria">Fornecedor</label>
                             <div>
-                                <select class="form-select-cadastro p-3 border bg-white" name="fornecedor" id="fornecedor">
+                                <select class="form-select-cadastro p-3 bg-white" name="fornecedor" id="fornecedor">
                                     <option value="0" selected>Selecione</option>
                                     @foreach($fornecedores as $fornecedor)
                                     <option value="{{$fornecedor->id}}">{{$fornecedor->nome}}</option>
@@ -54,13 +54,13 @@
                                 </select>
                             </div>
                             @error('fornecedor')
-                            <span class="text-danger mt-1">{{$message}}</span>
+                            <span class="text-red-500 mt-1">{{$message}}</span>
                             @enderror
                     </div>
                       <div class="mb-3 hidden" id="div-cliente">
                         <label for="categoria">Cliente</label>
                             <div>
-                                <select class="form-select-cadastro p-3 border bg-white " name="cliente" id="cliente">
+                                <select class="form-select-cadastro p-3 bg-white " name="cliente" id="cliente">
                                     <option value="0" selected>Selecione</option>
                                     @foreach($clientes as $cliente)
                                     <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
@@ -68,14 +68,14 @@
                                 </select>
                             </div>
                             @error('cliente')
-                            <span class="text-danger mt-1">{{$message}}</span>
+                            <span class="text-red-500 mt-1">{{$message}}</span>
                             @enderror
                     </div>
                       @if(session('erro'))
-                    <div class="text-danger">{{session('erro')}}</div>
+                    <div class="text-red-500">{{session('erro')}}</div>
                     @endif
                     <div class="mb-3 mt-2">
-                        <button type="submit" class="btn btn-primary">Mudar</button>
+                        <button type="submit" class="btn-main">Mudar</button>
                     </div>
 
                 </form>

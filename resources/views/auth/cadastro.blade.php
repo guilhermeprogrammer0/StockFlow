@@ -2,53 +2,52 @@
   <x-logo-component />
   <main class="main-container !h-180">
     <x-menu-component />
-    <x-area-component tipoAlinhamento2="items-start">
-      <div class="container bg-white rounded-md mt-2">
+    <x-area-component>
+      <div class="formulario p-2 mt-3 bg-white rounded">
         <div class="mt-2">
-        @if(session('sucesso'))
-          <div class="alert alert-success text-center">{{session('sucesso')}}</div>
+          @if(session('sucesso'))
+          <div class="text-green-400 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
           @endif
           @if(session('erro'))
-          <div class="alert alert-danger text-center">{{session('erro')}}</div>
+          <div class="text-red-400 text-2xl bg-red-100 text-center">{{session('erro')}}</div>
           @endif
-          </div>
-        <h1 class="escrito-entrar text-black text-center mt-50">Cadastro de usuários</h1>
+        </div>
+        <h1 class="escrito-entrar">Cadastro de usuários</h1>
         <form action="{{route('cadastro_usuario')}}" method="POST" novalidate>
           @csrf
           <div class="mb-3">
-            <div class="form-group">
-              <label for="usuario">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
-              @error('name')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
+            <label for="usuario">Nome</label>
+            <div>
+              <input type="text" class="input-form" id="name" name="name" value="{{old('name')}}">
             </div>
+            @error('name')
+            <span class="text-red-500 mt-1">{{$message}}</span>
+            @enderror
           </div>
           <div class="mb-3">
-            <div class="form-group">
               <label for="role">Tipo de perfil</label>
-              <select class="form-select-cadastro p-3 border" name="role">
+            <div>
+              <select class="form-select-cadastro p-3 bg-white" name="role">
                 <option value="0" selected>Selecione</option>
                 <option value="administrador">Administrador</option>
                 <option value="comum">Comum</option>
               </select>
-              @error('role')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
             </div>
+            @error('role')
+              <span class="text-red-500 mt-1">{{$message}}</span>
+              @enderror
           </div>
           <div class="mb-3">
-            <div class="form-group">
-              <label for="usuario">Usuário</label>
-              <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
-              @error('email')
-              <span class="text-danger mt-1">{{$message}}</span>
-              @enderror
+             <label for="usuario">Usuário</label>
+            <div>
+              <input type="email" class="input-form" id="email" name="email" value="{{old('email')}}">
             </div>
+              @error('email')
+              <span class="text-red-500 mt-1">{{$message}}</span>
+              @enderror
           </div>
-
-          <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <div class="mb-3">
+            <button type="submit" class="btn-main">Cadastrar</button>
           </div>
         </form>
       </div>
