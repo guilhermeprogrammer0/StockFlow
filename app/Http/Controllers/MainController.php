@@ -108,6 +108,7 @@ class MainController extends Controller
     }
     public function editar_usuario($id)
     {
+        
         $id = Crypt::decrypt($id);
         $user = User::find($id);
         return view('auth.editar_usuario', ['usuario' => $user]);
@@ -186,6 +187,9 @@ class MainController extends Controller
     }
     public function cadastro_fornecedores()
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         return view('cadastro-fornecedores');
     }
     public function cadastro_fornecedores_submit(Request $request)
@@ -232,6 +236,9 @@ class MainController extends Controller
     }
     public function editar_fornecedor($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
         return view('editar-fornecedor', compact('fornecedor'));
@@ -272,12 +279,18 @@ class MainController extends Controller
     }
     public function excluir_fornecedor($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
         return view('exclusao-confirma-fornecedor', compact('fornecedor'));
     }
     public function excluir_fornecedor_confirma($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $fornecedor = Fornecedor::find($id);
         if($fornecedor->movimentacao()->exists()){
@@ -288,6 +301,9 @@ class MainController extends Controller
     }
     public function cadastro_clientes()
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         return view('cadastro-clientes');
     }
     public function cadastro_clientes_submit(Request $request)
@@ -298,12 +314,17 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
+                'documento' => ['required', 'min:11', 'max:14', 'unique:clientes,documento'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes,email'],
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.string' => 'O campo nome tem que ser um texto',
                 'nome.max' => 'O campo nome não pode ter mais que :max caracteres',
+                'documento.required' => 'O campo documento é obrigatório',
+                'documento.min' => 'O campo documento deve ter no mínimo :min caracteres',
+                'documento.max' => 'O campo documento deve ter no máximo :max caracteres',
+                'documento.unique' => 'Documento indisponível',
                 'email.required' => 'O email é obrigatório',
                 'email.email' => 'O email deve ser válido',
                 'email.unique' => 'o email informado está indisponível',
@@ -312,6 +333,7 @@ class MainController extends Controller
         $cliente = new Cliente();
         $cliente->nome = $request->nome;
         $cliente->email = $request->email;
+        $cliente->documento = $request->documento;
         if ($cliente->save()) {
             return redirect()->back()->with('sucesso', 'Cliente cadastrado com sucesso!');
         } else {
@@ -328,6 +350,9 @@ class MainController extends Controller
     }
     public function editar_cliente($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $cliente = Cliente::find($id);
         return view('editar-cliente', compact('cliente'));
@@ -340,12 +365,17 @@ class MainController extends Controller
         $request->validate(
             [
                 'nome' => ['required', 'string', 'max:100'],
+                'documento' => ['required', 'min:11', 'max:14',Rule::unique('clientes')->ignore($request->id)],
                 'email' => ['required', 'string', 'email', 'max:255', Rule::unique('clientes')->ignore($request->id)],
             ],
             [
                 'nome.required' => 'O nome é obrigatório',
                 'nome.string' => 'O campo nome tem que ser um texto',
                 'nome.max' => 'O campo nome não pode ter mais que :max caracteres',
+                'documento.required' => 'O campo documento é obrigatório',
+                'documento.min' => 'O campo documento deve ter no mínimo :min caracteres',
+                'documento.max' => 'O campo documento deve ter no máximo :max caracteres',
+                'documento.unique' => 'Documento indisponível',
                 'email.required' => 'O email é obrigatório',
                 'email.email' => 'O email deve ser válido',
                 'email.unique' => 'o email informado está indisponível',
@@ -355,6 +385,8 @@ class MainController extends Controller
         $cliente = Cliente::find($request->id);
         $cliente->nome = $request->nome;
         $cliente->email = $request->email;
+        $cliente->documento = $request->documento;
+
         if ($cliente->save()) {
             return redirect()->back()->with('sucesso', 'Cliente editado com sucesso!');
         } else {
@@ -363,12 +395,18 @@ class MainController extends Controller
     }
     public function excluir_cliente($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $cliente = cliente::find($id);
         return view('exclusao-confirma-cliente', compact('cliente'));
     }
     public function excluir_cliente_confirma($id)
     {
+        if (Gate::denies('admin')) {
+            abort(403, 'Você não tem permissão para acessar esse recurso');
+        }
         $id = Crypt::decrypt($id);
         $cliente = cliente::find($id);
         if($cliente->movimentacao()->exists()){

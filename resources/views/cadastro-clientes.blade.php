@@ -25,6 +25,15 @@
             @enderror
           </div>
           <div class="mb-3">
+            <label for="documento">Documento</label>
+            <div>
+              <input type="text" class="input-form" id="documento" name="documento" value="{{old('documento')}}">
+            </div>
+            @error('documento')
+            <span class="text-red-500 mt-1">{{$message}}</span>
+            @enderror
+          </div>
+          <div class="mb-3">
             <label for="usuario">E-mail</label>
             <div>
               <input type="email" class="input-form" id="email" name="email" value="{{old('email')}}">

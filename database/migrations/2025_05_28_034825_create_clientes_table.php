@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome',100);
             $table->string('email')->unique();
+            $table->string('documento',14)->unique();
             $table->timestamps();
         });
     }
