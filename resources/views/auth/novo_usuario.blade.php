@@ -3,7 +3,7 @@
         <div class="w-md imagem">
             <img src="{{asset('imagens/imagem-logo-2.png')}}">
         </div>
-        <div class="w-md p-2 mt-3 bg-white rounded flex flex-col justify-center">
+        <div class="w-md p-5 mt-3 bg-white rounded flex flex-col justify-center">
             <h1 class="escrito-entrar text-center">Definir senha</h1>
             <form action="{{route('novo_usuario_senha')}}" method="POST" novalidate>
                 @csrf

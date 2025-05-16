@@ -3,7 +3,7 @@
     <div class="w-7xs imagem">
       <img src="{{asset('imagens/imagem-logo-2.png')}}">
     </div>
-    <div class="w-md p-2 mt-3 bg-white rounded flex flex-col justify-center">
+    <div class="w-md p-5 mt-3 bg-white rounded flex flex-col justify-center">
       @if(session('status'))
       <div class="p-10 h-full">
         <p class="text-green-400 text-md bg-green-100 text-center mb-5">E-mail enviado com sucesso, siga as intruções para recuperar a sua senha.</p>
