@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         DB::table('users')->insert([
-            'name' => 'Guilherme',
-            'email' => 'guilherme@gmail.com',
+            'name' => 'Administrador',
+            'email' => 'adm@gmail.com',
             'role' => 'administrador',
-            'password' => bcrypt('Guilherme00'),
+            'password' => bcrypt('Administrador00'),
             'email_verified_at' => now(),
         ]);
     }

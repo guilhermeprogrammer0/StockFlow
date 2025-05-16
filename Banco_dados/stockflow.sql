@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS `cache` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.cache: ~0 rows (aproximadamente)
+INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
+	('stockflow_cache_6f98a83f4ae3bf727b6adf2e6ed5a980', 'i:2;', 1747416883),
+	('stockflow_cache_6f98a83f4ae3bf727b6adf2e6ed5a980:timer', 'i:1747416883;', 1747416883);
 
 -- Copiando estrutura para tabela stockflow.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -131,19 +134,19 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.migrations: ~10 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
-	(37, '0001_01_01_000000_create_users_table', 1),
-	(38, '0001_01_01_000001_create_cache_table', 1),
-	(39, '0001_01_01_000002_create_jobs_table', 1),
-	(40, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1),
-	(41, '2025_04_06_145507_create_categorias_table', 1),
-	(42, '2025_04_07_134055_create_products_table', 1),
-	(43, '2025_04_27_221710_create_fornecedores_table', 1),
-	(44, '2025_05_28_034825_create_clientes_table', 1),
-	(45, '2025_05_31_121810_create_movimentacoes_table', 1);
+	(46, '0001_01_01_000000_create_users_table', 1),
+	(47, '0001_01_01_000001_create_cache_table', 1),
+	(48, '0001_01_01_000002_create_jobs_table', 1),
+	(49, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1),
+	(50, '2025_04_06_145507_create_categorias_table', 1),
+	(51, '2025_04_07_134055_create_products_table', 1),
+	(52, '2025_04_27_221710_create_fornecedores_table', 1),
+	(53, '2025_05_28_034825_create_clientes_table', 1),
+	(54, '2025_05_31_121810_create_movimentacoes_table', 1);
 
 -- Copiando estrutura para tabela stockflow.movimentacoes
 CREATE TABLE IF NOT EXISTS `movimentacoes` (
@@ -232,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela stockflow.users: ~1 rows (aproximadamente)
 INSERT IGNORE INTO `users` (`id`, `name`, `role`, `email`, `token`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Guilherme', 'administrador', 'guilherme@gmail.com', NULL, '2025-05-16 20:26:22', '$2y$12$bM9rhbuNzt/GS2wL4u57TO0FkjTrTn73WaP/i/zrN2bqSViZ01JkS', NULL, NULL, NULL, NULL, NULL, NULL);
+	(1, 'Administrador', 'administrador', 'adm@gmail.com', NULL, '2025-05-16 20:32:08', '$2y$12$vxlAKhOKIam8GqaapAJq7.l968Qzs4CALIFGqfK50vNKCffFxNn3G', NULL, NULL, NULL, NULL, NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
