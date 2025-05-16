@@ -5,7 +5,7 @@
         <x-area-component>
                 <div class="flex flex-col items-center justify-center bg-white p-5 rounded mt-2">
                   @if(session('erro'))
-                    <div class="text-red-400 text-2xl bg-red-100 text-center">
+                    <div class="text-red-600 text-2xl bg-red-100 text-center">
                     {{session('erro')}}
                     </div>
                     @endif

@@ -3,13 +3,13 @@
     <main class="main-container !h-190">
         <x-menu-component />
         <x-area-component>
-            <div class="formulario p-2 mt-3 bg-white rounded">
+            <div class="formulario p-2 mt-3 bg-white rounded text-center">
                 <div class="mt-2">
                     @if(session('sucesso'))
-                    <div class="text-green-400 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
+                    <div class="text-green-600 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
                     @endif
                     @if(session('erro'))
-                    <div class="text-red-400 text-2xl bg-red-100 text-center">{{session('erro')}}</div>
+                    <div class="text-red-600 text-2xl bg-red-100 text-center">{{session('erro')}}</div>
                     @endif
                 </div>
                 <div>
@@ -48,7 +48,7 @@
                     <div class="mb-3">
                         <label for="categoria">Categoria</label>
                         <div>
-                            <select class="form-select-cadastro p-3 border bg-white" name="categoria">
+                            <select class="form-select-cadastro p-3 bg-white" name="categoria">
                                 <option value="0" selected>Selecione</option>
                                 @foreach($categorias as $categoria)
                                 <option value="{{$categoria->id}}" {{ $categoria->id == $produto->categoria_id ? 'selected' : '' }}>{{$categoria->nome}}</option>
@@ -60,7 +60,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn-main">Editar</button>
+                        <div><button type="submit" class="btn-main">Editar</button></div>
+                        <div class="mt-2"><a href="{{route('lista_produtos')}}" class="text-blue-500"> Lista de produtos </a></div>
                     </div>
             </div>
             </form>

@@ -3,13 +3,13 @@
   <main class="main-container !h-180">
     <x-menu-component />
     <x-area-component>
-      <div class="formulario p-2 mt-3 bg-white rounded">
+      <div class="formulario p-2 mt-3 bg-white rounded text-center">
         <div class="mt-2">
           @if(session('sucesso'))
-          <div class="text-green-400 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
+          <div class="text-green-600 text-2xl bg-green-100 text-center">{{session('sucesso')}}</div>
           @endif
           @if(session('erro'))
-          <div class="text-red-400 text-2xl bg-red-100 text-center">{{session('erro')}}</div>
+          <div class="text-red-600 text-2xl bg-red-100 text-center">{{session('erro')}}</div>
           @endif
         </div>
         <h1 class="escrito-entrar">Cadastro de fornecedores</h1>
@@ -20,31 +20,31 @@
             <div>
               <input type="text" class="input-form" id="name" name="nome" value="{{old('nome')}}">
             </div>
-              @error('nome')
-              <span class="text-red-500 mt-1">{{$message}}</span>
-              @enderror
+            @error('nome')
+            <span class="text-red-500 mt-1">{{$message}}</span>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="cnpj">CNPJ</label>
             <div>
               <input type="text" class="input-form" id="cnpj" name="cnpj" value="{{old('cnpj')}}">
             </div>
-              @error('cnpj')
-              <span class="text-red-500 mt-1">{{$message}}</span>
-              @enderror
+            @error('cnpj')
+            <span class="text-red-500 mt-1">{{$message}}</span>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="usuario">E-mail</label>
             <div>
               <input type="email" class="input-form" id="email" name="email" value="{{old('email')}}">
             </div>
-             @error('email')
-              <span class="text-red-500 mt-1">{{$message}}</span>
-              @enderror
+            @error('email')
+            <span class="text-red-500 mt-1">{{$message}}</span>
+            @enderror
           </div>
-
           <div class="mb-3">
-            <button type="submit" class="btn-main">Cadastrar</button>
+             <div><button type="submit" class="btn-main">Cadastrar</button></div>
+            <div class="my-2"><a href="{{route('lista_fornecedores')}}" class="text-blue-500"> Lista de fornecedores </a></div>
           </div>
         </form>
       </div>

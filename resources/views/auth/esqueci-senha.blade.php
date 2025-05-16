@@ -6,7 +6,7 @@
     <div class="w-md p-5 mt-3 bg-white rounded flex flex-col justify-center">
       @if(session('status'))
       <div class="p-10 h-full">
-        <p class="text-green-400 text-md bg-green-100 text-center mb-5">E-mail enviado com sucesso, siga as intruções para recuperar a sua senha.</p>
+        <p class="text-green-600 text-md bg-green-100 text-center mb-5">E-mail enviado com sucesso, siga as intruções para recuperar a sua senha.</p>
         <p class="text-center"><a href="{{route('login')}}"><span class="btn-main p-3 cursor-pointer"> Voltar ao login </span></a></p>
       </div>
       @else

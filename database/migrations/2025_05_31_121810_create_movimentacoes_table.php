@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
             $table->foreign('fornecedor_id')->references('id')->on('fornecedores')->onDelete('restrict');
             $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('restrict');
-
         });
     }
 

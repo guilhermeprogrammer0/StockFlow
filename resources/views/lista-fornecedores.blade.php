@@ -5,7 +5,7 @@
         <x-area-component>
             <div class="lista_usuarios overflow-x-auto">
             @if(count($fornecedores) === 0)
-            <h2 class="text-white bg-red-900 p-1 text-center">Não foram encontrados fornecedores</h2>
+            <h2 class="text-white bg-red-900 p-1 text-center mt-2 text-3xl">Não foram encontrados fornecedores</h2>
             @else
                 <table class="table table-striped">
                     <thead>

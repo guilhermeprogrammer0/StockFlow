@@ -17,11 +17,11 @@
                     @foreach($usuarios as $usuario)
                     <tbody>
                         <tr>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->name}} </strong> @else {{$usuario->name}} @endif </td>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{\Illuminate\Support\Str::ucfirst($usuario->role)}} </strong> @else {{\Illuminate\Support\Str::ucfirst($usuario->role)}} @endif </td>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong>@endif @if($usuario->email_verified_at !== null) <span class="badge badge-success p-1"> Sim </span> @else <span class="badge badge-danger p-1"> Não </span> @endif </td>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->email}} </strong> @else {{$usuario->email}} @endif </td>
-                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-teal-100': ''}}">@can('acao_admin',$usuario)<a href="{{route('editar_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-pen-to-square text-orange-500 m-1 cursor:pointer"></i></a><a href="{{route('excluir_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-trash text-red-700 cursor:pointer"></i></a> @endcan</td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-zinc-300': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->name}} </strong> @else {{$usuario->name}} @endif </td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-zinc-300': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{\Illuminate\Support\Str::ucfirst($usuario->role)}} </strong> @else {{\Illuminate\Support\Str::ucfirst($usuario->role)}} @endif </td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-zinc-300': ''}}">@if ($usuario->id == Auth::user()->id) @endif @if($usuario->email_verified_at !== null) <span class="text-green-600 bg-green-100 p-1 rounded"> Sim </span> @else <span class="text-red-600 bg-red-100 p-1 rounded"> Não </span> @endif </td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-zinc-300': ''}}">@if ($usuario->id == Auth::user()->id) <strong> {{$usuario->email}} </strong> @else {{$usuario->email}} @endif </td>
+                            <td class="{{$usuario->id == Auth::user()->id ? 'bg-zinc-300': ''}}">@can('acao_admin',$usuario)<a href="{{route('editar_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-pen-to-square text-orange-500 m-1 cursor:pointer"></i></a><a href="{{route('excluir_usuario',['id'=>Crypt::encrypt($usuario->id)])}}"><i class="fa-solid fa-trash text-red-700 cursor:pointer"></i></a> @endcan</td>
                         </tr>
                     </tbody>
                     @endforeach
