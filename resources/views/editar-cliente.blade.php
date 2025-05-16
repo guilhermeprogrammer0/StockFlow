@@ -26,9 +26,9 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="documento">CNPJ</label>
+            <label for="documento">Documento</label>
             <div>
-              <input type="text" class="input-form" id="documento" name="documento" value="{{old('documento',$fornecedor->documento)}}">
+              <input type="text" class="input-form" id="documento" name="documento" placeholder="CNPJ ou CPF" value="{{old('documento',$fornecedor->documento)}}">
             </div>
             @error('cnpj')
             <span class="text-red-500 mt-1">{{$message}}</span>
