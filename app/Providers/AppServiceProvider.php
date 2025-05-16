@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('senha',function(User $user, User $usuario){
             return $user->id === $usuario->id;
         });
+        Gate::define('nao_excluir', function(User $user, User $usuario){
+            return $usuario->id != 1;
+        });
         
         // Gate::define('ver_teste', [PolicyPagina::class, 'ver_teste']);
     }

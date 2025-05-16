@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Guilherme',
             'email' => 'guilherme@gmail.com',
             'role' => 'administrador',
-            'password' => bcrypt('Guilherme00')
+            'password' => bcrypt('Guilherme00'),
+            'email_verified_at' => now(),
         ]);
     }
 }
