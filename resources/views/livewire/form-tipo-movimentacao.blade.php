@@ -6,7 +6,7 @@
         <option value="saida"> Saída </option>
     </select>
     @if($movimentacoes->count() === 0)
-    <h2 class="text-white bg-red-900 p-1 text-center mt-2 text-3xl">Não foram encontradas movimentacões</h2>
+    <h2 class="text-white bg-red-900 p-1 text-center mt-2 text-3xl">Não foram encontradas movimentações</h2>
     @else
     <table class="table table-striped mt-2">
         <thead>
