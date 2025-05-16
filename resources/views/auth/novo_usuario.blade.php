@@ -9,25 +9,27 @@
                 @csrf
                 <input type="hidden" name="token" value="{{$token}}">
                 <div class="mb-3">
-                     <label for="senha">Senha</label>
+                    <label for="senha">Senha</label>
                     <div>
                         <input type="password" class="input-form senha" id="password" name="password">
                     </div>
-                     @error('password')
-                        <span class="text-red-500 mt-1">{{$message}}</span>
-                        @enderror
+                    @error('password')
+                    <span class="text-red-500 mt-1">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                     <label for="senha">Confirmar senha</label>
+                    <label for="senha">Confirmar senha</label>
                     <div>
                         <input type="password" class="input-form senha" id="password_confirmation" name="password_confirmation">
-                        <i class="fa-solid fa-eye mt-2" id="btn_senha"></i>
                     </div>
-                      @error('password_confirmation')
-                        <span class="text-red-500 mt-1">{{$message}}</span>
-                        @enderror
+                    @error('password_confirmation')
+                    <span class="text-red-500 mt-1">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="mb-3">
+                <p class="text-center">
+                    <i class="fa-solid fa-eye text-center mt-2" id="btn_senha"></i>
+                </p>
+                <div class="mb-3 text-center">
                     <button type="submit" class="btn-main">Entrar</button>
                 </div>
             </form>

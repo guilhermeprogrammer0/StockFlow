@@ -4,7 +4,7 @@
             <img src="{{asset('imagens/imagem-logo-2.png')}}">
         </div>
         <div class="w-md p-2 mt-3 bg-white rounded flex flex-col justify-center h-50">
-            <p class="text-center">Bem-vindo! Faça login agora mesmo:</p>
+            <p class="text-center text-xl"><strong>Bem-vindo(a)!</strong> Faça login agora mesmo.</p>
            <p class="text-center mt-5"> <a href="{{route('login')}}" class="btn-main"> login </a></p>
         </div>
     </main>
