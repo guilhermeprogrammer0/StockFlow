@@ -81,7 +81,7 @@ class MainController extends Controller
                 'password.min' => 'A senha tem que ter no mínimo :min caracteres',
                 'password.regex' => 'Pelo menos uma letra maiúscula, uma minúscula e um número',
                 'password_confirmation.required' => 'A confirmação de senha é obrigatória',
-                'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
+                'password_confirmation.same' => 'A confirmação de senha deve ser igual a senha',
             ]
         );
         $user = User::where('token', $request->token)->first();
@@ -142,7 +142,7 @@ class MainController extends Controller
                 'password.min' => 'A senha tem que ter no mínimo :min caracteres',
                 'password.regex' => 'Pelo menos uma letra maiúscula, uma minúscula e um número',
                 'password_confirmation.required' => 'A confirmação de senha é obrigatória',
-                'password_confirmation.same' => 'A confirmação de senha deve ser igual à senha',
+                'password_confirmation.same' => 'A confirmação de senha deve ser igual a senha',
             ]
         );
         $user = User::find($request->id);
