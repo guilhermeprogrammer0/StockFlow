@@ -13,7 +13,7 @@
             <div class="card-header relative">
                 <h4 class="text-xl text-color p-2 break-words">{{ $produto->nome }}</h4>
                 @can('admin')
-                <a href="{{ route('excluir_produto', ['id' => Crypt::encrypt($produto->id)]) }}">
+                <a href="{{route('excluir_produto', ['id' => Crypt::encrypt($produto->id)])}}">
                     <i class="fa-solid fa-delete-left absolute top-1 right-1 text-red-700 cursor-pointer"></i>
                 </a>
                 @endcan
