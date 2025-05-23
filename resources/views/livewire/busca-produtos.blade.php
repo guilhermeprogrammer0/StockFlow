@@ -9,30 +9,30 @@
     @else
     <div class="flex gap-1 w-full h-auto justify-evenly items-start flex-wrap">
         @foreach($produtos as $produto)
-        <div class="card h-auto w-96">
-            <div class="card-header relative">
-                <h4 class="text-xl text-color p-2 break-words">{{ $produto->nome }}</h4>
+        <div class="mt-2 p-1 bg-white w-96 min-h-[270px] max-h-[350px] overflow-y-auto">
+            <div class="relative">
                 @can('admin')
                 <a href="{{route('excluir_produto', ['id' => Crypt::encrypt($produto->id)])}}">
-                    <i class="fa-solid fa-delete-left absolute top-1 right-1 text-red-700 cursor-pointer"></i>
+                    <i class="fa-solid fa-delete-left absolute top-0 right-0 text-red-700 cursor-pointer "></i>
                 </a>
                 @endcan
             </div>
-            <ul class="list-group">
+            <h4 class="text-lg text-color p-2 w-full break-words"><strong>{{ $produto->nome }}</strong></h4>
+            <ul class="list-group bg-white colorCard flex flex-col justify-center mb-6">
                 <li class="list-group-item">Código: <strong>{{ $produto->codigo }}</strong></li>
-                <li class="list-group-item">Preço: R${{ number_format($produto->preco, 2, ',', '.') }}</li>
-                <li class="list-group-item">Quantidade: {{ $produto->quantidade ?? 0 }}</li>
-                <li class="list-group-item text-center">
-                    <a href="{{ route('mudar_estoque', ['id' => Crypt::encrypt($produto->id)]) }}" class="btn-produto btn-mudar-estoque">
-                        Mudar estoque
-                    </a>
-                    @can('admin')
-                    <a href="{{ route('editar_produto', ['id' => Crypt::encrypt($produto->id)]) }}" class="btn-produto btn-editar">
-                        Editar produto
-                    </a>
-                    @endcan
-                </li>
+                <li class="list-group-item">Preço: R${{ number_format($produto->preco, 2, ',', '.') }} </li>
+                <li class="list-group-item">Quantidade: <span class="{{$produto->quantidade === null ? 'text-red-600 font-bold' : '' }}">{{ $produto->quantidade ?? 0}}</span></li>
             </ul>
+            <div class="mb-3 text-center">
+                <a href="{{ route('mudar_estoque', ['id' => Crypt::encrypt($produto->id)]) }}" class="btn-produto btn-mudar-estoque">
+                    Mudar estoque
+                </a>
+                @can('admin')
+                <a href="{{ route('editar_produto', ['id' => Crypt::encrypt($produto->id)]) }}" class="btn-produto btn-editar">
+                    Editar produto
+                </a>
+                @endcan
+            </div>
         </div>
         @endforeach
     </div>

@@ -181,15 +181,12 @@
 }
 
 /* === Cards e Listas === */
-.card {
-    margin-top: 2px;
-    padding: 0.8em;
-    background-color: white;
+.colorCard {
+    background-color: #F2F2F2;
 }
 
 .list-group-item {
     padding: 0.7em;
-    background-color: #e1f1f8;
 }
 
 .lista-categorias {
