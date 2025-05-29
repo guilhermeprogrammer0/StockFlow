@@ -15,18 +15,21 @@
                 <th scope="col">@if($tipo ==='entrada') Fornecedor @elseif($tipo === 'saida') Cliente @else Cliente/Fornecedor @endif</th>
                 <th scope="col">Quantidade Movimentada</th>
                 <th scope="col">Tipo de movimentação</th>
-                <th scope="col">Data</th>
+                <th scope="col">Data e hora</th>
             </tr>
         </thead>
         <tbody>
             @foreach($movimentacoes as $movimentacao)
             <tr>
+                @php
+                 $dataFormatada = \Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y');
+                 $horaFormatada = \Carbon\Carbon::parse($movimentacao->data)->format('H:i');
+                @endphp
                 <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
                 <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome ?? 'Fornecedor excluído' : $movimentacao->cliente->nome ?? 'Cliente excluído'}}</td>
                 <td>{{$movimentacao->quantidade}}</td>
                 <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
-                <td>{{\Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y')}}</td>
-
+                <td>{{ $dataFormatada }} às {{ $horaFormatada }}</td>
             </tr>
             @endforeach
         </tbody>

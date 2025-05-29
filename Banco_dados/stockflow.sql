@@ -2,7 +2,7 @@
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           8.4.3 - MySQL Community Server - GPL
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.10.0.7000
+-- HeidiSQL Versão:              12.8.0.6908
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS `cache` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela stockflow.cache: ~0 rows (aproximadamente)
+INSERT IGNORE INTO `cache` (`key`, `value`, `expiration`) VALUES
+	('stockflow_cache_6f98a83f4ae3bf727b6adf2e6ed5a980', 'i:1;', 1748558851),
+	('stockflow_cache_6f98a83f4ae3bf727b6adf2e6ed5a980:timer', 'i:1748558851;', 1748558851);
 
 -- Copiando estrutura para tabela stockflow.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -133,26 +136,26 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela stockflow.migrations: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela stockflow.migrations: ~9 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
-	(55, '0001_01_01_000000_create_users_table', 1),
-	(56, '0001_01_01_000001_create_cache_table', 1),
-	(57, '0001_01_01_000002_create_jobs_table', 1),
-	(58, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1),
-	(59, '2025_04_06_145507_create_categorias_table', 1),
-	(60, '2025_04_07_134055_create_products_table', 1),
-	(61, '2025_04_27_221710_create_fornecedores_table', 1),
-	(62, '2025_05_28_034825_create_clientes_table', 1),
-	(63, '2025_05_31_121810_create_movimentacoes_table', 1);
+	(82, '0001_01_01_000000_create_users_table', 1),
+	(83, '0001_01_01_000001_create_cache_table', 1),
+	(84, '0001_01_01_000002_create_jobs_table', 1),
+	(85, '2025_03_30_235729_add_two_factor_columns_to_users_table', 1),
+	(86, '2025_04_06_145507_create_categorias_table', 1),
+	(87, '2025_04_07_134055_create_products_table', 1),
+	(88, '2025_04_27_221710_create_fornecedores_table', 1),
+	(89, '2025_05_28_034825_create_clientes_table', 1),
+	(90, '2025_05_31_121810_create_movimentacoes_table', 1);
 
 -- Copiando estrutura para tabela stockflow.movimentacoes
 CREATE TABLE IF NOT EXISTS `movimentacoes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `tipo` enum('entrada','saida') COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantidade` int NOT NULL,
-  `data` date NOT NULL,
+  `data` datetime NOT NULL,
   `product_id` bigint unsigned DEFAULT NULL,
   `fornecedor_id` bigint unsigned DEFAULT NULL,
   `cliente_id` bigint unsigned DEFAULT NULL,
@@ -234,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela stockflow.users: ~1 rows (aproximadamente)
 INSERT IGNORE INTO `users` (`id`, `name`, `role`, `email`, `token`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Administrador', 'administrador', 'adm@gmail.com', NULL, '2025-05-17 00:49:10', '$2y$12$EmKFo08c0jfRQOoiExWvfORx.pU1D1anKYAherlfHmDXLyEY3FmcG', NULL, NULL, NULL, NULL, NULL, NULL);
+	(1, 'Administrador', 'administrador', 'adm@gmail.com', NULL, '2025-05-30 01:45:48', '$2y$12$Hvs1ICe1ZA1aMTauUTJj/eFm4qQdCkYc.T/GO1Xi3ak4doN.omnTi', NULL, NULL, NULL, NULL, NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('tipo', ['entrada', 'saida']); 
             $table->integer('quantidade'); 
-            $table->date('data');      
+            $table->dateTime('data');      
             $table->unsignedBigInteger('product_id')->nullable(); 
             $table->unsignedBigInteger('fornecedor_id')->nullable();     
             $table->unsignedBigInteger('cliente_id')->nullable();        
