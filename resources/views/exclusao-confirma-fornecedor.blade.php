@@ -9,7 +9,7 @@
                     {{session('erro')}}
                     </div>
                     @endif
-                    <h2 class="text-3xl">Deseja mesmo excluir o fornecedor<strong> {{$fornecedor->nome ?? 'Fornecedor excluído'}}</strong>?</h2>
+                    <h2 class="text-3xl text-center">Deseja mesmo excluir o fornecedor<strong> {{$fornecedor->nome ?? 'Fornecedor excluído'}}</strong>?</h2>
                     <div class="mt-5">
                     <a href="{{route('lista_fornecedores')}}" class="btn-produto btn-editar"> Cancelar</a>
                     <a href="{{route('excluir_fornecedor_confirma',['id'=>Crypt::encrypt($fornecedor->id)])}}" class="btn-produto btn-excluir">Excluir</a>

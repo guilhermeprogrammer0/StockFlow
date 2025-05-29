@@ -9,7 +9,7 @@
                     {{session('erro')}}
                     </div>
                     @endif
-                    <h2 class="text-3xl">Deseja mesmo excluir <strong> {{$categoria->nome}}</strong>?</h2>
+                    <h2 class="text-3xl text-center">Deseja mesmo excluir a categoria <strong> {{$categoria->nome}}</strong>?</h2>
                     <div class="mt-5">
                     <a href="{{route('cadastro_categorias')}}" class="btn-produto btn-editar">Cancelar</a>
                     <a href="{{route('excluir_categoria_confirma',['id'=>Crypt::encrypt($categoria->id)])}}" class="btn-produto btn-excluir"> Excluir</a>

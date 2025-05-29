@@ -76,7 +76,7 @@
                     @endif
                     <div class="mb-3">
                         <div><button type="submit" class="btn-main">Mudar estoque</button></div>
-                        <div class="mt-2"><a href="{{route('movimentacoes')}}" class="text-blue-500"> Movimentações </a></div>
+                        <div class="mt-2 flex flex-col"><a href="{{route('movimentacoes')}}" class="text-blue-500"> Movimentações </a> <a href="{{route('lista_produtos')}}" class="text-blue-500"> Lista de produtos </a></div>
                     </div>
                 </form>
             </div>

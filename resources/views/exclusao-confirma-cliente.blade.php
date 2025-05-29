@@ -9,7 +9,7 @@
                     {{session('erro')}}
                     </div>
                     @endif
-                    <h2 class="text-3xl">Deseja mesmo excluir o cliente<strong> {{$cliente->nome ?? 'Cliente excluído'}}</strong>?</h2>
+                    <h2 class="text-3xl text-center">Deseja mesmo excluir o cliente<strong> {{$cliente->nome ?? 'Cliente excluído'}}</strong>?</h2>
                     <div class="mt-5">
                     <a href="{{route('lista_clientes')}}" class="btn-produto btn-editar"> Cancelar</a>
                     <a href="{{route('excluir_cliente_confirma',['id'=>Crypt::encrypt($cliente->id)])}}" class="btn-produto btn-excluir">Excluir</a>
