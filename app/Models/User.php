@@ -51,5 +51,8 @@ class User extends Authenticatable
     {
         $this->notify(new NotificacaoPersonalizada($token));  
     }
+     public function movimentacao(){
+        return $this->hasMany(Movimentacao::class);
+    }
   
 }

@@ -11,11 +11,13 @@
     <table class="table table-striped mt-2">
         <thead>
             <tr>
+                <th scope="col">Código</th>
                 <th scope="col">Produto</th>
                 <th scope="col">@if($tipo ==='entrada') Fornecedor @elseif($tipo === 'saida') Cliente @else Cliente/Fornecedor @endif</th>
                 <th scope="col">Quantidade Movimentada</th>
                 <th scope="col">Tipo de movimentação</th>
                 <th scope="col">Data e hora</th>
+                <th scope="col">Feita por</th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +27,14 @@
                  $dataFormatada = \Carbon\Carbon::parse($movimentacao->data)->setTimezone('America/Sao_Paulo')->format('d/m/Y');
                  $horaFormatada = \Carbon\Carbon::parse($movimentacao->data)->setTimezone('America/Sao_Paulo')->format('H:i');
                 @endphp
+                <td><strong>{{$movimentacao->produto->codigo}}</strong> </td>
                 <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
                 <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome ?? 'Fornecedor excluído' : $movimentacao->cliente->nome ?? 'Cliente excluído'}}</td>
                 <td>{{$movimentacao->quantidade}}</td>
                 <td class="{{$movimentacao->tipo == 'saida' ? 'bg-red-500 text-white' : ' bg-green-500 text-white' }}">{{ucfirst($movimentacao->tipo);}}</td>
                 <td>{{ $dataFormatada }} às {{ $horaFormatada }}</td>
+                <td>{{$movimentacao->users->name ?? 'Usuário excluído'}}</td>
+
             </tr>
             @endforeach
         </tbody>

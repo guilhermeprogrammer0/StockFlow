@@ -9,6 +9,9 @@ class Movimentacao extends Model
 {
     protected $fillable = ['tipo','quantidade','data','product_id','fornecedor_id'];
     protected $table = 'movimentacoes';
+    public function users(){
+        return $this->belongsTo(User::class,'user_id');
+    }
     public function produto(){
         return $this->belongsTo(Product::class,'product_id');
     }

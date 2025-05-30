@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -190,6 +191,7 @@ class ProductsController extends Controller
         $movimentacao->tipo = $request->tipo;
         $movimentacao->quantidade = $request->quantidade;
         $movimentacao->data = Carbon::now();
+        $movimentacao->user_id = Auth::user()->id;
         $movimentacao->product_id = $request->product_id;
         if ($request->tipo === 'entrada') {
             $movimentacao->fornecedor_id = $request->fornecedor;
