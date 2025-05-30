@@ -22,8 +22,8 @@
             @foreach($movimentacoes as $movimentacao)
             <tr>
                 @php
-                 $dataFormatada = \Carbon\Carbon::parse($movimentacao->data)->format('d/m/Y');
-                 $horaFormatada = \Carbon\Carbon::parse($movimentacao->data)->format('H:i');
+                 $dataFormatada = \Carbon\Carbon::parse($movimentacao->data)->setTimezone('America/Sao_Paulo')->format('d/m/Y');
+                 $horaFormatada = \Carbon\Carbon::parse($movimentacao->data)->setTimezone('America/Sao_Paulo')->format('H:i');
                 @endphp
                 <td>{{$movimentacao->produto->nome ?? 'Produto excluído'}}</td>
                 <td>{{$movimentacao->tipo === 'entrada' ? $movimentacao->fornecedor->nome ?? 'Fornecedor excluído' : $movimentacao->cliente->nome ?? 'Cliente excluído'}}</td>
